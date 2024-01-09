@@ -1201,7 +1201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 513df576567a2d148aea059ba84cfc31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartScene: 
+  StartScene: Village
   SetingPanel: {fileID: 1896860591}
 --- !u!1 &1644883553
 GameObject:
