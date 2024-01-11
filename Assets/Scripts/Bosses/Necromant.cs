@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class Necromant : MonoBehaviour
 {
+    [SerializeField] private GameObject MSkelet;
+    [SerializeField] private GameObject BSkelet;
     private void Start()
     {
         
     }
     private void FixedUpdate()
     {
-        Teleport();
+        
     }
     private void SpawnSK()
     {
