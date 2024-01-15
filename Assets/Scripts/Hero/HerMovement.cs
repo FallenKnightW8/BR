@@ -4,26 +4,62 @@ using UnityEngine;
 
 public class HerMovement : MonoBehaviour
 {
-    [SerializeField] private float Speed = 2;
+    [SerializeField] private float MoveSpeed = 2;
     [SerializeField] private Vector2 Direction;
     [SerializeField] private Rigidbody2D Rigidbody;
 
+    [SerializeField] private float ActivityMoveSpeed;
+    [SerializeField] private float DashSpeed;
+
+    [SerializeField] private float DashLength = .5f;
+    [SerializeField] private float DashCooldown = 1f;
+
+    [SerializeField] private float DashCounter;
+    [SerializeField] private float DashCoolCounter;
+
     void Start()
     {
+        ActivityMoveSpeed = MoveSpeed;
+
         Rigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        GetDirection();
+        MoveAndDash();
     }
-    private void GetDirection()
+    private void MoveAndDash()
     {
         Direction.x = Input.GetAxis("Horizontal");
         Direction.y = Input.GetAxis("Vertical");
-    }
-    private void FixedUpdate()
-    {
-        Rigidbody.MovePosition(Rigidbody.position +  Direction * Speed * Time.deltaTime);
+
+        Direction.Normalize();
+
+        Rigidbody.velocity = Direction * ActivityMoveSpeed;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (DashCoolCounter <= 0 && DashCounter <= 0)
+            {
+                ActivityMoveSpeed = DashSpeed;
+                DashCounter = DashLength;
+            }
+        }
+
+        if (DashCounter > 0)
+        {
+            DashCounter -= Time.deltaTime;
+
+            if (DashCounter <= 0)
+            {
+                ActivityMoveSpeed = MoveSpeed;
+                DashCoolCounter = DashCooldown;
+            }
+        }
+
+        if (DashCoolCounter > 0)
+        {
+            DashCoolCounter -= Time.deltaTime;
+        }
     }
 }
