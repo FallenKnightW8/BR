@@ -9,9 +9,9 @@ public class HerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D Rigidbody;
 
     [SerializeField] private float ActivityMoveSpeed;
-    [SerializeField] private float DashSpeed;
+    [SerializeField] private float DashSpeed = 7;
 
-    [SerializeField] private float DashLength = .5f;
+    [SerializeField] private float DashLength = .15f;
     [SerializeField] private float DashCooldown = 1f;
 
     [SerializeField] private float DashCounter;
