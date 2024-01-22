@@ -6,12 +6,8 @@ public class MSkeleton : MonoBehaviour
     [SerializeField] private GameObject Father;//necromant
     [SerializeField] private Rigidbody2D Rigidbody;
     [SerializeField] private int Health = 2;
-    [SerializeField] private float speed = 3;
+    [SerializeField] private float speed = 0.05f;
     private Vector2 movement;
-    void Start()
-    {
-
-    }
 
     void FixedUpdate()
     {
@@ -21,7 +17,7 @@ public class MSkeleton : MonoBehaviour
             Father = GameObject.FindWithTag("Boss");
         if (Rigidbody == null)
             Rigidbody = this.GetComponent<Rigidbody2D>();
-        if (Health > 0) Died();
+        if (Health <= 0) Died();
         GetPlayer();
     }
 
@@ -36,7 +32,7 @@ public class MSkeleton : MonoBehaviour
 
     private void Move(Vector2 direction)
     {
-        Rigidbody.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
+        Rigidbody.MovePosition((Vector2)transform.position + (direction * speed /4 * Time.deltaTime));
     }
 
     private void Attack()

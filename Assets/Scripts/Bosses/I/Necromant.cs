@@ -8,29 +8,31 @@ public class Necromant : MonoBehaviour
     [SerializeField] private GameObject MSkelet;
     [SerializeField] private GameObject BSkelet;
     [SerializeField] private GameObject Hands;
-    private int MskeletCount = 0;
+    [SerializeField]private int MskeletCount = 0;
     private GameObject Spawned;
-    private int BskeletCount = 0;
+    [SerializeField]private int BskeletCount = 0;
     private bool CanSpawn = true;
-    private bool CRIsWork = false;
-    private bool FStadia = false;
+    private bool CRIsWork = true;
+    public bool FStadia = false;
+    private bool CountFStadia = false;
     [SerializeField]private int Health = 20;
     private int GetDamageC = 0;
 
 
     private void FixedUpdate()
     {
-        bool Count = true;
-        if (!FStadia)
+        if (FStadia == false)
             BatelMind();
-        else if (Count && FStadia)
-            Count = false;
+        else if (FStadia == true)
+        {
+            FStadia = false;
             FBatle();
+        }
     }
     private IEnumerator StartingM()
     {
         CRIsWork = true;
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(10);
         CanSpawn = true;
         CRIsWork = false;
         StopAllCoroutines();
@@ -38,12 +40,16 @@ public class Necromant : MonoBehaviour
 
     private void GetDamage(int Damage)
     {
+       
         Health -= Damage;
         GetDamageC++;
-        if (GetDamageC % 2 == 0)
-            Teleport();
-        if (Health / 4 <= 5)
+        if (GetDamageC % 2 == 0) { Teleport(); GetDamageC = 0; }
+
+        if (Health <= 5 && CountFStadia == true)
+        {
             FStadia = true;
+            CountFStadia = false;
+        }
     }
     private void BatelMind()
     {

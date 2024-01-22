@@ -109,6 +109,7 @@ MonoBehaviour:
   - {fileID: 8098279492722564333}
   - {fileID: 4391488906687028223}
   Live: {fileID: 21300000, guid: d1ee1cec4c587a24cbed1b717f61b2da, type: 3}
+  HalfHeart: {fileID: 0}
   NoLive: {fileID: 21300000, guid: 58340f6e7b9d97140a41628118950ef6, type: 3}
 --- !u!1 &551196263480707583
 GameObject:
@@ -615,9 +616,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c41833323a24404ea537e4b9ac843f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
+  MoveSpeed: 2
   Direction: {x: 0, y: 0}
   Rigidbody: {fileID: 0}
+  ActivityMoveSpeed: 0
+  DashSpeed: 7
+  DashLength: 0.15
+  DashCooldown: 1
+  DashCounter: 0
+  DashCoolCounter: 0
 --- !u!1 &4548386578659934144
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,7 +768,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.0059401
+  orthographic size: 1.7159406
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1120,7 +1127,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -420.9, y: 228.14996}
+  m_AnchoredPosition: {x: -420.90002, y: 228.14996}
   m_SizeDelta: {x: -841.6, y: -456.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2195910198977133353
