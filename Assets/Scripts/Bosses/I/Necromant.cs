@@ -14,7 +14,7 @@ public class Necromant : MonoBehaviour
     private bool CanSpawn = true;
     private bool CRIsWork = true;
     public bool FStadia = false;
-    private bool CountFStadia = false;
+    private bool CountFStadia = true;
     [SerializeField]private int Health = 20;
     private int GetDamageC = 0;
 
@@ -32,7 +32,7 @@ public class Necromant : MonoBehaviour
     private IEnumerator StartingM()
     {
         CRIsWork = true;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         CanSpawn = true;
         CRIsWork = false;
         StopAllCoroutines();
@@ -102,11 +102,11 @@ public class Necromant : MonoBehaviour
 
     private void Teleport()
     {
-        float PositionX = Random.Range(-10,10);
+        float PositionX = Random.Range(-5,5);
         float PositionY = Random.Range(0, 10);
         transform.position = new Vector2 (PositionX,PositionY);
-        if (transform.position.x > 10 && transform.position.x < -10) transform.position = new Vector2(0, transform.position.y);
-        if (transform.position.y > 10 && transform.position.y < -10) transform.position = new Vector2(transform.position.x, 10);
+        if (transform.position.x >= 4 && transform.position.x <= -4) transform.position = new Vector2(0, transform.position.y);
+        if (transform.position.y >= 4 && transform.position.y <= -4) transform.position = new Vector2(transform.position.x, 10);
     }
 
     private void FBatle()

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4282275564612685530}
   - component: {fileID: 4016224555884356351}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 8614716239543417118}
   - component: {fileID: 2200919518929628281}
   - component: {fileID: 2514976929970073018}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,10 +160,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794f27831d8b0fd46ab7fe79f8d26f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rigidbody: {fileID: 8614716239543417118}
-  Collider: {fileID: 2514976929970073018}
   Direction: {x: 0, y: 0}
   speed: 0.1
+  Damage: 1
 --- !u!70 &2514976929970073018
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

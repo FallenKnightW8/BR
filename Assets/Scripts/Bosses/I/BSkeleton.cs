@@ -14,9 +14,16 @@ public class BSkeleton : MonoBehaviour
     private bool Shoted = false;
     private Vector2 movement;
 
+    private void GetDamage(int Damage)
+    {
+        Health -= Damage;
+    }
     void FixedUpdate()
     {
-        if(Player == null)
+        if (transform.position.x >= 5 && transform.position.x <= -5) transform.position = new Vector2(0, transform.position.y);
+        if (transform.position.y >= 5 && transform.position.y <= -5) transform.position = new Vector2(transform.position.x, 10);
+
+        if (Player == null)
             Player = GameObject.FindWithTag("Player");
         if (Father == null)
             Father = GameObject.FindWithTag("Boss");
