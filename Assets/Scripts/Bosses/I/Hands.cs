@@ -9,6 +9,7 @@ public class Hands : MonoBehaviour
     [SerializeField] private Rigidbody2D Rigidbody;
     [SerializeField] private int Health = 4;
     [SerializeField] private float speed = 3;
+    [SerializeField] private int Damage = 1;
     private Vector2 movement;
 
     // Update is called once per frame
@@ -26,14 +27,13 @@ public class Hands : MonoBehaviour
     private void GetPlayer()
     {
         Vector3 direction = Player.transform.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         direction.Normalize();
         movement = direction;
         Move(movement);
     }
     private void Move(Vector2 direction)
     {
-        Rigidbody.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
+        Rigidbody.MovePosition((Vector2)transform.position + (speed * Time.deltaTime * direction));
     }
 
     private void Died()

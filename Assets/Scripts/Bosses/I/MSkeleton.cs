@@ -7,6 +7,7 @@ public class MSkeleton : MonoBehaviour
     [SerializeField] private Rigidbody2D Rigidbody;
     [SerializeField] private int Health = 2;
     [SerializeField] private float speed = 0.05f;
+    [SerializeField] private int Damage = 1;
     private Vector2 movement;
 
     void FixedUpdate()
@@ -24,7 +25,6 @@ public class MSkeleton : MonoBehaviour
     private void GetPlayer()
     {
         Vector3 direction = Player.transform.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         direction.Normalize();
         movement = direction;
         Move(movement);

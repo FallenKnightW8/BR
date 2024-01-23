@@ -31,7 +31,6 @@ public class BSkeleton : MonoBehaviour
     private void GetPlayer()
     {
         Vector3 direction = Player.transform.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         direction.Normalize();
         movement = direction;
         Move(movement);
@@ -46,11 +45,11 @@ public class BSkeleton : MonoBehaviour
     {
         Shoted = true;
         yield return new WaitForSeconds(8);
-        Attack(movement);
+        Attack();
         Shoted = false;
         StopAllCoroutines();
     }
-    private void Attack(Vector2 direction)
+    private void Attack()
     {
         Spawned = Instantiate(Arrow,transform.position, transform.rotation);
         Vector3 targ = Spawned.transform.position;

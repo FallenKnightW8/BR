@@ -15,6 +15,11 @@ public class HellsBar : MonoBehaviour
         Health = MaxHealth;
     }
 
+    public void GetDamage(int damage)
+    {
+        Health -= damage;
+    }
+
     // Update is called once per frame
     void Update()
     {

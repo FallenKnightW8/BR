@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class ProjecTile : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D Rigidbody;
-    [SerializeField] private Collider2D Collider;
     [SerializeField] private Vector2 Direction;
     [SerializeField] private float speed = 10000;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Rigidbody = GetComponent<Rigidbody2D>();
-        Collider = GetComponent<Collider2D>();
-    }
+    [SerializeField] private int Damage = 1;
 
-    // Update is called once per frame
     void FixedUpdate()
     {
+        transform.Translate(50 * speed * Time.deltaTime * Vector3.up);
+    }
 
-        transform.Translate(Vector3.up * 50 * speed * Time.deltaTime);
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")) 
+        {
+            collision.gameObject.SendMessage("GetDamage", 1);
+        }
     }
 }
