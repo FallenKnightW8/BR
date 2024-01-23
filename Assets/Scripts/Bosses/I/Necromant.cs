@@ -40,7 +40,6 @@ public class Necromant : MonoBehaviour
 
     private void GetDamage(int Damage)
     {
-       
         Health -= Damage;
         GetDamageC++;
         if (GetDamageC % 2 == 0) { Teleport(); GetDamageC = 0; }
@@ -51,6 +50,7 @@ public class Necromant : MonoBehaviour
             CountFStadia = false;
         }
     }
+
     private void BatelMind()
     {
         SpawnSK();

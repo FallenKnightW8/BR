@@ -8,6 +8,7 @@ public class MSkeleton : MonoBehaviour
     [SerializeField] private int Health = 2;
     [SerializeField] private float speed = 0.05f;
     [SerializeField] private int Damage = 1;
+
     private Vector2 movement;
 
     void FixedUpdate()
