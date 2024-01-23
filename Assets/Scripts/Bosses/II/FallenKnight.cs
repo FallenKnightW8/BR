@@ -11,6 +11,7 @@ public class FallenKnight : MonoBehaviour
     [SerializeField] private int Health = 30;
     [SerializeField] private float speed = 0.05f;
     [SerializeField] private int Damage = 1;
+
     private Vector2 movement;
     private void FixedUpdate()
     {

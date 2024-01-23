@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HerMovement : MonoBehaviour
 {
@@ -17,13 +16,18 @@ public class HerMovement : MonoBehaviour
     [SerializeField] private float DashCounter;
     [SerializeField] private float DashCoolCounter;
 
-    [SerializeField] private PlayerCombat playerCombat;
+    [Header("Image cooldown")]
+    [SerializeField] private Image ColldownDash;
+
     [Header("Player combat")]
     [SerializeField] private float attackPointChangePosition;
+    [SerializeField] private PlayerCombat playerCombat;
 
     void Start()
     {
         ActivityMoveSpeed = MoveSpeed;
+
+        ColldownDash.fillAmount = 1;
 
         Rigidbody = GetComponent<Rigidbody2D>();
     }
@@ -55,6 +59,8 @@ public class HerMovement : MonoBehaviour
             {
                 ActivityMoveSpeed = DashSpeed;
                 DashCounter = DashLength;
+
+                ColldownDash.fillAmount = 0;
             }
         }
 
@@ -72,6 +78,13 @@ public class HerMovement : MonoBehaviour
         if (DashCoolCounter > 0)
         {
             DashCoolCounter -= Time.deltaTime;
+
+            ColldownDash.fillAmount += 1 / (DashCoolCounter*2f) * Time.deltaTime;
+
+            if (DashCoolCounter <= 0)
+            {
+                ColldownDash.fillAmount = 1;
+            }
         }
     }
 
