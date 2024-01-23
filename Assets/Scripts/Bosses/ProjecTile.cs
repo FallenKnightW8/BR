@@ -17,7 +17,7 @@ public class ProjecTile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) 
         {
-            collision.gameObject.SendMessage("GetDamage", 1);
+            collision.gameObject.SendMessage("GetDamage", Damage);
         }
     }
 }

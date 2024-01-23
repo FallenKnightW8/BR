@@ -265,6 +265,7 @@ MonoBehaviour:
   DashCounter: 0
   DashCoolCounter: 0
   playerCombat: {fileID: 4838573930781277606}
+  attackPointChangePosition: 0.15
 --- !u!114 &4838573930781277606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,11 +279,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 6284194133457779941}
-  attackRange: 0.1
+  attackRange: 0.3
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
-  herMovement: {fileID: 0}
+  herMovement: {fileID: 5486740550780616101}
+  damage: 1
 --- !u!1 &1427992483413558770
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,7 +965,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.7159406
+  orthographic size: 2.9562407
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

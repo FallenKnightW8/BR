@@ -8,11 +8,15 @@ public class Hands : MonoBehaviour
     [SerializeField] private GameObject Father;//necromant
     [SerializeField] private Rigidbody2D Rigidbody;
     [SerializeField] private int Health = 4;
-    [SerializeField] private float speed = 3;
+    [SerializeField] private float speed = 0.15f;
     [SerializeField] private int Damage = 1;
     private Vector2 movement;
 
     // Update is called once per frame
+    private void GetDamage(int Damage)
+    {
+        Health -= Damage;
+    }
     void FixedUpdate()
     {
         if (Health <= 0) Died();
@@ -33,7 +37,7 @@ public class Hands : MonoBehaviour
     }
     private void Move(Vector2 direction)
     {
-        Rigidbody.MovePosition((Vector2)transform.position + (speed * Time.deltaTime * direction));
+        Rigidbody.MovePosition((Vector2)transform.position + (speed/5 * Time.deltaTime * direction));
     }
 
     private void Died()
