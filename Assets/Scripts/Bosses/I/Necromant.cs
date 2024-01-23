@@ -32,7 +32,7 @@ public class Necromant : MonoBehaviour
     private IEnumerator StartingM()
     {
         CRIsWork = true;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         CanSpawn = true;
         CRIsWork = false;
         StopAllCoroutines();
