@@ -21,6 +21,10 @@ public class FallenKnight : MonoBehaviour
     private Vector2 movement;
     private void FixedUpdate()
     {
+        if (Health <=0)
+        {
+            Die();
+        }
         if (Player == null)
             Player = GameObject.FindWithTag("Player");
         if (Rigidbody == null)
@@ -30,6 +34,11 @@ public class FallenKnight : MonoBehaviour
             StartCoroutine(ChangeAttack());
         }
     }
+    private void GetDamage(int Damage)
+    {
+        Health -= Damage;
+    }
+        
 
     private IEnumerator ChangeAttack()
     {
@@ -70,10 +79,10 @@ public class FallenKnight : MonoBehaviour
                 ShotAttack();
                 break;
             case 1:
-                MeleeAttack();
+                AimSwods();
                 break;
             case 2:
-                AimSwods();
+                MeleeAttack();
                 break;
 
         }
@@ -141,5 +150,10 @@ public class FallenKnight : MonoBehaviour
             Spawned.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
         }
         Attacking = false;
+    }
+
+    private void Die()
+    {
+        Destroy(this.gameObject);
     }
 }
