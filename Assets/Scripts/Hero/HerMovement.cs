@@ -3,9 +3,12 @@ using UnityEngine.UI;
 
 public class HerMovement : MonoBehaviour
 {
+    [SerializeField] private GameObject SpriteObject;
+
     [SerializeField] private float MoveSpeed = 2;
     [SerializeField] private Vector2 Direction;
     [SerializeField] private Rigidbody2D Rigidbody;
+    [SerializeField] private float RigidbodyVelocity;
 
     [SerializeField] private float ActivityMoveSpeed;
     [SerializeField] private float DashSpeed = 7;
@@ -23,6 +26,10 @@ public class HerMovement : MonoBehaviour
     [SerializeField] private float attackPointChangePosition;
     [SerializeField] private PlayerCombat playerCombat;
 
+    [Header("Animations")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private bool FacingLeft = false;
+
     void Start()
     {
         ActivityMoveSpeed = MoveSpeed;
@@ -35,6 +42,7 @@ public class HerMovement : MonoBehaviour
     void Update()
     {
         MoveAndDash();
+        CheckFlip();
         ChangeAttackPosition();
         //Debug.Log("x and y" + "" + Direction.x + "" + Direction.y);
     }
@@ -51,7 +59,12 @@ public class HerMovement : MonoBehaviour
 
         Direction.Normalize();
 
+        RigidbodyVelocity = Direction.x * ActivityMoveSpeed;
+
         Rigidbody.velocity = Direction * ActivityMoveSpeed;
+
+        // Animations
+        //animator.SetFloat("RigidbodyVelocity", Mathf.Abs(RigidbodyVelocity));
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -109,5 +122,26 @@ public class HerMovement : MonoBehaviour
         {
             playerCombat.SetAttackPointPosition(new Vector3(Rigidbody.transform.position.x, Rigidbody.transform.position.y + -attackPointChangePosition, 0));
         }
+    }
+
+    private void CheckFlip()
+    {
+        if (Direction.x < 0 && FacingLeft)
+        {
+            Flip();
+        }
+        else if (Direction.x > 0 && !FacingLeft)
+        {
+            Flip();
+        }
+    }
+
+    private void Flip()
+    {
+        FacingLeft = !FacingLeft;
+
+        Vector3 theScale = SpriteObject.transform.localScale;
+        theScale.x *= -1;
+        SpriteObject.transform.localScale = theScale;
     }
 }
