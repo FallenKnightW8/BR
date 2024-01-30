@@ -22,6 +22,16 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    public void setDamage(int _damage)
+    {
+        damage = _damage;
+    }
+
+    public int getDamage()
+    {
+        return damage;
+    }
+
     public void SetAttackPointPosition(Vector3 _position)
     {
         this.attackPoint.position = _position;
