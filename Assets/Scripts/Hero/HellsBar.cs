@@ -31,9 +31,18 @@ public class HellsBar : MonoBehaviour
         if (Health > MaxHealth) Health = MaxHealth;
         for (int i = 0; i < MaxOfGameHP.Length; i++)
         {
-            if (i < Health)
-                MaxOfGameHP[i].sprite = HalfHeart;
-            else
+            if (Health>i && Health % 2 ==0)
+                MaxOfGameHP[i].sprite = Live;
+            else if (Health/2 +1 > i   && Health % 2 !=0)
+            {
+                MaxOfGameHP[i].sprite = Live;
+                if ((i * 2) == Health * 2)
+                {
+                    MaxOfGameHP[i].sprite = HalfHeart;
+                }
+
+            }
+            else if (Health < i)
                 MaxOfGameHP[i].sprite = NoLive;
 
             if(i < MaxHealth)

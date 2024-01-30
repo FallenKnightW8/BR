@@ -23,7 +23,7 @@ public class HerMovement : MonoBehaviour
     [SerializeField] private Image ColldownDash;
 
     [Header("Player combat")]
-    [SerializeField] private float attackPointChangePosition;
+    [SerializeField] private float attackPointChangePosition = 0.2f;
     [SerializeField] private PlayerCombat playerCombat;
 
     [Header("Animations")]

@@ -7,6 +7,6 @@ public class Spawn : MonoBehaviour
     [SerializeField] private GameObject Player;
     void Start()
     {
-        Instantiate(Player);
+        Instantiate(Player,transform.position,transform.rotation);
     }
 }

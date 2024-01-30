@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 448297231330599964}
   - component: {fileID: 5486740550780616101}
   - component: {fileID: 4838573930781277606}
+  - component: {fileID: 5253665043018412171}
   m_Layer: 0
   m_Name: MainHer Stamina
   m_TagString: Player
@@ -343,7 +344,7 @@ MonoBehaviour:
   DashCounter: 0
   DashCoolCounter: 0
   ColldownDash: {fileID: 4787030785130004486}
-  attackPointChangePosition: 0.15
+  attackPointChangePosition: 0.2
   playerCombat: {fileID: 4838573930781277606}
   animator: {fileID: 0}
   FacingLeft: 0
@@ -360,12 +361,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 6284194133457779941}
-  attackRange: 0.3
+  attackRange: 0.5
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
   herMovement: {fileID: 5486740550780616101}
   damage: 1
+--- !u!114 &5253665043018412171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069534401004781382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d042c69e48d82884a85771cd8c576bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 12
+  Health: 12
+  MaxOfGameHP:
+  - {fileID: 5459674181960083285}
+  - {fileID: 631668502050962184}
+  - {fileID: 3820999443110916790}
+  - {fileID: 4446819541668943816}
+  - {fileID: 130047672501646814}
+  - {fileID: 4318856028669918963}
+  Live: {fileID: 21300000, guid: d1ee1cec4c587a24cbed1b717f61b2da, type: 3}
+  HalfHeart: {fileID: 3300845671008729435, guid: be65edaa42cd3564cbab18809fd9a985, type: 3}
+  NoLive: {fileID: 21300000, guid: 58340f6e7b9d97140a41628118950ef6, type: 3}
 --- !u!1 &1427992483413558770
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,7 +759,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2398434878364805522}
   - component: {fileID: 7282951624988547613}
-  - component: {fileID: 7925049773145850131}
   m_Layer: 0
   m_Name: Hero1
   m_TagString: Untagged
@@ -811,30 +835,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7925049773145850131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4713904061761946649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d042c69e48d82884a85771cd8c576bac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHealth: 6
-  Health: 6
-  MaxOfGameHP:
-  - {fileID: 5459674181960083285}
-  - {fileID: 631668502050962184}
-  - {fileID: 3820999443110916790}
-  - {fileID: 4446819541668943816}
-  - {fileID: 130047672501646814}
-  - {fileID: 4318856028669918963}
-  Live: {fileID: 21300000, guid: d1ee1cec4c587a24cbed1b717f61b2da, type: 3}
-  HalfHeart: {fileID: 0}
-  NoLive: {fileID: 21300000, guid: 58340f6e7b9d97140a41628118950ef6, type: 3}
 --- !u!1 &6123806504963267487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,7 +1080,7 @@ Transform:
   m_GameObject: {fileID: 6858846855298659882}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
