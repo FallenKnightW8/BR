@@ -3,54 +3,51 @@ using UnityEngine.UI;
 
 public class HerMovement : MonoBehaviour
 {
-    [SerializeField] private GameObject SpriteObject;
-
     [SerializeField] private float MoveSpeed = 2;
     [SerializeField] private Vector2 Direction;
     [SerializeField] private Rigidbody2D Rigidbody;
-    [SerializeField] private float RigidbodyVelocity;
 
     [SerializeField] private float ActivityMoveSpeed;
-    [SerializeField] private float DashSpeed = 7;
-
-    [SerializeField] private float DashLength = .15f;
-    [SerializeField] private float DashCooldown = 1f;
-
-    [SerializeField] private float DashCounter;
-    [SerializeField] private float DashCoolCounter;
-
-    [Header("Image cooldown")]
-    [SerializeField] private Image ColldownDash;
-
-    [Header("Player combat")]
-    [SerializeField] private float attackPointChangePosition = 0.2f;
-    [SerializeField] private PlayerCombat playerCombat;
 
     [Header("Animations")]
     [SerializeField] private Animator animator;
 
-    public Vector2 getDirection()
+    public Vector2 GetDirection()
     {
         return Direction;
+    }
+
+    public float GetActivityMoveSpeed()
+    {
+        return ActivityMoveSpeed;
+    }
+
+    public float GetMoveSpeed()
+    {
+        return MoveSpeed;
+    }
+
+    public void SetActivityMoveSpeed(float activityMoveSpeed)
+    {
+        ActivityMoveSpeed = activityMoveSpeed;
+    }
+
+    private void Awake()
+    {
+        Rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
     {
         ActivityMoveSpeed = MoveSpeed;
-
-        ColldownDash.fillAmount = 1;
-
-        Rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        MoveAndDash();
-        ChangeAttackPosition();
-        //Debug.Log("x and y" + "" + Direction.x + "" + Direction.y);
+        Move();
     }
 
-    private void MoveAndDash()
+    private void Move()
     {
         Direction.x = Input.GetAxis("Horizontal");
         Direction.y = Input.GetAxis("Vertical");
@@ -63,62 +60,5 @@ public class HerMovement : MonoBehaviour
         animator.SetFloat("Horizontal", Direction.x);
         animator.SetFloat("Vertical", Direction.y);
         animator.SetFloat("Speed", Rigidbody.velocity.sqrMagnitude);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (DashCoolCounter <= 0 && DashCounter <= 0)
-            {
-                ActivityMoveSpeed = DashSpeed;
-                DashCounter = DashLength;
-
-                ColldownDash.fillAmount = 0;
-            }
-        }
-
-        if (DashCounter > 0)
-        {
-            DashCounter -= Time.deltaTime;
-
-            if (DashCounter <= 0)
-            {
-                ActivityMoveSpeed = MoveSpeed;
-                DashCoolCounter = DashCooldown;
-            }
-        }
-
-        if (DashCoolCounter > 0)
-        {
-            DashCoolCounter -= Time.deltaTime;
-
-            ColldownDash.fillAmount += 1 / (DashCoolCounter*2f) * Time.deltaTime;
-
-            if (DashCoolCounter <= 0)
-            {
-                ColldownDash.fillAmount = 1;
-            }
-        }
-    }
-
-    private void ChangeAttackPosition()
-    {
-        // Check player direction of X
-        if (Direction.x > 0)
-        {
-            playerCombat.SetAttackPointPosition(new Vector3(Rigidbody.transform.position.x + attackPointChangePosition, Rigidbody.transform.position.y, 0));
-        }
-        else if(Direction.x < 0)
-        {
-            playerCombat.SetAttackPointPosition(new Vector3(Rigidbody.transform.position.x + -attackPointChangePosition, Rigidbody.transform.position.y, 0));
-        }
-
-        // Check player direction of Y
-        if (Direction.y > 0)
-        {
-            playerCombat.SetAttackPointPosition(new Vector3(Rigidbody.transform.position.x, Rigidbody.transform.position.y + attackPointChangePosition, 0));
-        }
-        else if (Direction.y < 0)
-        {
-            playerCombat.SetAttackPointPosition(new Vector3(Rigidbody.transform.position.x, Rigidbody.transform.position.y + -attackPointChangePosition, 0));
-        }
     }
 }

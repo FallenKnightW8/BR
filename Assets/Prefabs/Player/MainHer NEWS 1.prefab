@@ -1254,6 +1254,7 @@ GameObject:
   - component: {fileID: 857802159666514893}
   - component: {fileID: 561781328970007344}
   - component: {fileID: 6759968207314231568}
+  - component: {fileID: 8276551694795291594}
   - component: {fileID: 1170306921670422277}
   m_Layer: 8
   m_Name: MainHer NEWS 1
@@ -1420,20 +1421,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c41833323a24404ea537e4b9ac843f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpriteObject: {fileID: 5195650958079051997}
   MoveSpeed: 3
   Direction: {x: 0, y: 0}
   Rigidbody: {fileID: 0}
-  RigidbodyVelocity: 0
   ActivityMoveSpeed: 0
-  DashSpeed: 10
-  DashLength: 0.2
-  DashCooldown: 0.5
-  DashCounter: 0
-  DashCoolCounter: 0
-  ColldownDash: {fileID: 6346524315362108119}
-  attackPointChangePosition: 0.2
-  playerCombat: {fileID: 6383054691287544053}
   animator: {fileID: 1170306921670422277}
 --- !u!114 &6383054691287544053
 MonoBehaviour:
@@ -1447,12 +1438,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6782a57fdb3d9c4783dc3b4e260ddc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scriptMovment: {fileID: 0}
+  Rigidbody: {fileID: 0}
   attackPoint: {fileID: 2655380355505537913}
   attackRange: 0.5
+  attackPointChangePosition: 0.2
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
-  herMovement: {fileID: 6774160909665714703}
   damage: 1
 --- !u!114 &857802159666514893
 MonoBehaviour:
@@ -1515,6 +1508,23 @@ MonoBehaviour:
   Damage: 2
   OldDamageAttack: 0
   BaffDamageAttack: 3
+--- !u!114 &8276551694795291594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5195650958079051997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f959b9891a91f458ae65397538386d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptMovment: {fileID: 0}
+  DashSpeed: 12
+  DashLength: 0.15
+  DashCooldown: 1
+  ColldownDash: {fileID: 6346524315362108119}
 --- !u!95 &1170306921670422277
 Animator:
   serializedVersion: 7
