@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,13 +8,12 @@ public class FallenKnight : MonoBehaviour
     [SerializeField] private GameObject Player;
     [SerializeField] private Rigidbody2D Rigidbody;
     [SerializeField] private GameObject Sword;
-    private bool PlayerInAttackR = false;
+    [SerializeField]private bool PlayerInAttackR = false;
     private bool Attacking = false;
     private bool Thinking = false;
     private bool StopRun = false;
     [SerializeField] private int Health = 30;
-    [SerializeField] private float speed = 0.05f;
-    [SerializeField] private int Damage = 1;
+    [SerializeField] private int Damage = 2;
 
     private Vector2 movement;
     private void FixedUpdate()
@@ -33,6 +31,8 @@ public class FallenKnight : MonoBehaviour
             Debug.Log("Thinking");
             StartCoroutine(ChangeAttack());
         }
+        if (transform.position.x <-9 || transform.position.x > 0.5) transform.position = new Vector2(0, transform.position.y);
+        if (transform.position.y > 19 || transform.position.y < 3) transform.position = new Vector2(transform.position.x, 18);
     }
     private void GetDamage(int Damage)
     {
@@ -41,7 +41,7 @@ public class FallenKnight : MonoBehaviour
         
     public void ChangePlayerR(bool Check)
     {
-        if (Check) PlayerInAttackR = true;
+        PlayerInAttackR = Check;
     }
     private IEnumerator ChangeAttack()
     {
@@ -50,18 +50,6 @@ public class FallenKnight : MonoBehaviour
         Attack();
         StopCoroutine(ChangeAttack());
     }
-    private void GetPlayer()
-    {
-        Vector3 direction = Player.transform.position - transform.position;
-        direction.Normalize();
-        movement = direction;
-        Move(movement);
-    }
-
-    private void Move(Vector2 direction)
-    {
-        Rigidbody.MovePosition((Vector2)transform.position + (direction * speed / 4 * Time.deltaTime));
-    }
     private void Attack()
     {
         Attacking = true;
@@ -69,15 +57,14 @@ public class FallenKnight : MonoBehaviour
         int WhatTheAttack;
         int Stadia;
         Stadia = Convert.ToInt32(Mathf.Round(Health / 10));
-        //        WhatTheAttack = Random.Range(0, Stadia);
-        WhatTheAttack = 2;
+        WhatTheAttack = Random.Range(0, Stadia);
         switch (WhatTheAttack) 
         {
             case 0:
-                ShotAttack();
+                AimSwods();
                 break;
             case 1:
-                AimSwods();
+                ShotAttack();
                 break;
             case 2:
                 MeleeAttack();
@@ -88,7 +75,9 @@ public class FallenKnight : MonoBehaviour
 
     private void ShotAttack()//Zero Attak
     {
-        transform.position = new Vector2(0, 23); 
+        Vector2 RandomPosition = new Vector2(0,18);
+        RandomPosition.x = Random.Range(-3,0);
+        transform.position = RandomPosition; 
         for (int i = 0;i < 18; i++)
         {
             GameObject Spawned;
@@ -101,27 +90,11 @@ public class FallenKnight : MonoBehaviour
 
     private void MeleeAttack() //first Attack
     {
-        Debug.Log("Start");
-        GetPlayer();
-        if (PlayerInAttackR)
-        {
-            Debug.Log("Noup");
-            StartCoroutine(CuldawnAttack());
-        }
-        else
-        {
-            Debug.Log("I Run");
-            StopRun = false;
-            StartCoroutine(CuldawnAttack());
-            while (!PlayerInAttackR || !StopRun) 
-            {
-                Debug.Log("I Steel Run");
-                GetPlayer();
-            }
-            Debug.Log("I don't Run");
-            StartCoroutine(CuldawnAttack());
-        }
-        Attacking = false;
+        Vector3 AroundP = new Vector3(0,0,0);
+        AroundP.x = Random.Range(-1,1);
+        AroundP.y = Random.Range(-1,1);
+        transform.position = Player.transform.position + AroundP;
+        StartCoroutine(CuldawnAttack());
     }
 
     private IEnumerator Run()
@@ -133,20 +106,20 @@ public class FallenKnight : MonoBehaviour
     }
     private IEnumerator CuldawnAttack() 
     {
-        Debug.Log("I attack");
-        yield return new WaitForSeconds(1);
-        if (PlayerInAttackR) Player.SendMessage("GetDamage", 1);
-        Debug.Log("I I attackss");
+        yield return new WaitForSeconds(0.5f);
+        if (PlayerInAttackR) Player.SendMessage("GetDamage", Damage);
+        Attacking = false;
         StopCoroutine(CuldawnAttack());
     }
 
     private void AimSwods() //second attack
     {
+        Vector2 Changeposition;
         for (int i = 0; i < 3; i++)
         {
             Vector2 RandomP;
-            RandomP.x = Random.Range(-9, 0);
-            RandomP.y = Random.Range(18, 4);
+            RandomP.x = Random.Range(-9, 9);
+            RandomP.y = Random.Range(20, 22);
             GameObject Spawned = Instantiate(Sword, RandomP, Quaternion.identity);
             Vector3 targ = Spawned.transform.position;
             Vector3 objectPos = Player.transform.position;
@@ -155,6 +128,9 @@ public class FallenKnight : MonoBehaviour
             float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
             Spawned.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
         }
+        Changeposition.x = Random.Range(-1, 1);
+        Changeposition.y = Random.Range(-1, 1);
+        transform.position = new Vector2(transform.position.x + Changeposition.x, transform.position.y + Changeposition.y);
         Attacking = false;
     }
 
