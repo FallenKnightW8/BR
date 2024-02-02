@@ -46,6 +46,8 @@ public class Necromant : MonoBehaviour
 
     private void GetDamage(int Damage)
     {
+        Animator.SetBool("Idle?", false);
+        Animator.SetFloat("StateNecromant", 1);
         Health -= Damage;
         GetDamageC++;
         if (GetDamageC % 2 == 0) { Teleport(); GetDamageC = 0; }
@@ -111,8 +113,6 @@ public class Necromant : MonoBehaviour
 
     private void Teleport()
     {
-        Animator.SetBool("Idle?", false);
-        Animator.SetFloat("StateNecromant", 1);
         float PositionX = Random.Range(-5, 5);
         float PositionY = Random.Range(0, 10);
         transform.position = new Vector2 (PositionX,PositionY);
@@ -123,6 +123,7 @@ public class Necromant : MonoBehaviour
 
     private void FBatle()
     {
+        Animator.SetFloat("StateNecromant", 0);
         for (int i = 0; i < 2; i++)
         {
             Spawned = Instantiate(Hands);
