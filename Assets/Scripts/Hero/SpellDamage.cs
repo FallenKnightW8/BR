@@ -25,6 +25,8 @@ public class SpellDamage : MonoBehaviour
     {
         phs = this.GetComponent<PlayerHealthSystem>();
         pc = this.GetComponent<PlayerCombat>();
+        OldDamageAttack = pc.getDamage();
+        BaffDamageAttack = pc.getDamage();
     }
 
     // Start is called before the first frame update
@@ -49,7 +51,6 @@ public class SpellDamage : MonoBehaviour
                 TimeBaff = TimeBaffMax;
                 ColldownBaff = ColldownBaffMax + TimeBaffMax;
 
-                OldDamageAttack = pc.getDamage();
                 pc.setDamage(BaffDamageAttack);
 
                 Sword.SetActive(true);
