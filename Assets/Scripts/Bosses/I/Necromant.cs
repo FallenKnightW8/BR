@@ -13,6 +13,7 @@ public class Necromant : MonoBehaviour
     [SerializeField] private int MskeletCount = 0;
     [SerializeField] private int Health = 20;
     [SerializeField] private Animator Animator;
+    private AudioSource audioSource;
 
     private GameObject Spawned;
     private int BskeletCount = 0;
@@ -22,7 +23,11 @@ public class Necromant : MonoBehaviour
     private bool CountFStadia = true;
     private int GetDamageC = 0;
 
-
+    private void Awake()
+    {
+        audioSource = GameObject.FindWithTag("Mysic").GetComponent<AudioSource>();
+        audioSource.SendMessage("ChangerMys", 1);
+    }
     private void FixedUpdate()
     {
         if (Player == null)
@@ -123,6 +128,7 @@ public class Necromant : MonoBehaviour
 
     private void FBatle()
     {
+        audioSource.SendMessage("ChangerMys", 2);
         Animator.SetFloat("StateNecromant", 0);
         for (int i = 0; i < 2; i++)
         {
@@ -137,6 +143,7 @@ public class Necromant : MonoBehaviour
 
     private void Died()
     {
+        audioSource.SendMessage("ChangerMys", 3);
         Player.SendMessage("SetHeart", 2);
         Player.SendMessage("SetHealth",10);
         Destroy(gameObject);

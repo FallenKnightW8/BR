@@ -13,7 +13,7 @@ public class BoosSpawn : MonoBehaviour
         { 
              if (Boss != null)
              {
-                Instantiate(Boss);
+                Instantiate(Boss, transform.position,transform.rotation);
              }
         }
     }
