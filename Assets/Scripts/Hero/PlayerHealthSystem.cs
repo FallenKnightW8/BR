@@ -16,10 +16,21 @@ public class PlayerHealthSystem : MonoBehaviour
         Health -= damage;
     }
 
+    public void SetHealth(int heal)
+    {
+        Health += heal
+    }
+
+    public void SetHeart(int heart)
+    {
+        MaxHealthNew += heart;
+    }
+
     private void Start()
     {
         Health = MaxHealthOld;
         mySlider.maxValue = MaxHealthOld;
+        MaxHealthNew = MaxHealthOld;
 
         NoLiveImage.offsetMax += new Vector2(MaxHealthOld / 2 * 100, 0);
     }
