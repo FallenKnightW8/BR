@@ -11,11 +11,8 @@ public class FallenKnight : MonoBehaviour
     [SerializeField]private bool PlayerInAttackR = false;
     private bool Attacking = false;
     private bool Thinking = false;
-    private bool StopRun = false;
     [SerializeField] private int Health = 30;
     [SerializeField] private int Damage = 2;
-
-    private Vector2 movement;
     private void FixedUpdate()
     {
         if (Health <=0)
@@ -95,14 +92,6 @@ public class FallenKnight : MonoBehaviour
         AroundP.y = Random.Range(-1,1);
         transform.position = Player.transform.position + AroundP;
         StartCoroutine(CuldawnAttack());
-    }
-
-    private IEnumerator Run()
-    {
-        yield return new WaitForSeconds(2);
-        StopRun = true;
-        StopCoroutine(Run());
-
     }
     private IEnumerator CuldawnAttack() 
     {

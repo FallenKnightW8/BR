@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MSkeleton : MonoBehaviour
@@ -8,6 +9,7 @@ public class MSkeleton : MonoBehaviour
     [SerializeField] private int Health = 2;
     [SerializeField] private float speed = 0.05f;
     [SerializeField] private int Damage = 1;
+    private bool playerInRange = false;
 
     private Vector2 movement;
     private void GetDamage(int Damage)
@@ -41,12 +43,18 @@ public class MSkeleton : MonoBehaviour
     {
         Rigidbody.MovePosition((Vector2)transform.position + (direction * speed /4 * Time.deltaTime));
     }
-
-    private void Attack()
+    public void ChangePlayerR(bool Check)
     {
-
+        playerInRange = Check;
+        StartCoroutine(Attack());
     }
 
+    private IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(0.5f);
+         if(playerInRange) Player.SendMessage("GetDamage",Damage);
+        StopCoroutine(Attack());
+    }    
     private void Died()
     {
         if (Father != null)

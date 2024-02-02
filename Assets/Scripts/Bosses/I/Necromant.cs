@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class Necromant : MonoBehaviour
 {
+    private GameObject Player;
     [SerializeField] private GameObject MSkelet;
     [SerializeField] private GameObject BSkelet;
     [SerializeField] private GameObject Hands;
@@ -21,6 +22,8 @@ public class Necromant : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Player == null)
+            Player = GameObject.FindWithTag("Player");
         if (FStadia == false)
             BatelMind();
         else if (FStadia == true)
@@ -121,6 +124,8 @@ public class Necromant : MonoBehaviour
 
     private void Died()
     {
+        Player.SendMessage("SetHeart", 2);
+        Player.SendMessage("SetHealth",10);
         Destroy(gameObject);
     }
 }

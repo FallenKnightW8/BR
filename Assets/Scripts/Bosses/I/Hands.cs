@@ -9,7 +9,8 @@ public class Hands : MonoBehaviour
     [SerializeField] private Rigidbody2D Rigidbody;
     [SerializeField] private int Health = 4;
     [SerializeField] private float speed = 0.15f;
-    [SerializeField] private int Damage = 1;
+    [SerializeField] private int Damage = 2;
+    private bool PlayerInAttackR = false;
     private Vector2 movement;
 
     // Update is called once per frame
@@ -39,7 +40,18 @@ public class Hands : MonoBehaviour
     {
         Rigidbody.MovePosition((Vector2)transform.position + (speed/5 * Time.deltaTime * direction));
     }
+    
+    public void ChangePlayerR(bool Check)
+    {
+        PlayerInAttackR = Check;
+        StartCoroutine(Attack());
+    }
 
+    private IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (PlayerInAttackR) Player.SendMessage("GetDamage",Damage);
+    }
     private void Died()
     {
         if (Father != null)
