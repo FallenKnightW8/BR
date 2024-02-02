@@ -6,17 +6,20 @@ using UnityEngine.UIElements;
 public class Necromant : MonoBehaviour
 {
     private GameObject Player;
+
     [SerializeField] private GameObject MSkelet;
     [SerializeField] private GameObject BSkelet;
     [SerializeField] private GameObject Hands;
-    [SerializeField]private int MskeletCount = 0;
+    [SerializeField] private int MskeletCount = 0;
+    [SerializeField] private int Health = 20;
+    [SerializeField] private Animator Animator;
+
     private GameObject Spawned;
-    [SerializeField]private int BskeletCount = 0;
+    private int BskeletCount = 0;
     private bool CanSpawn = true;
     private bool CRIsWork = true;
     public bool FStadia = false;
     private bool CountFStadia = true;
-    [SerializeField]private int Health = 20;
     private int GetDamageC = 0;
 
 
@@ -73,6 +76,8 @@ public class Necromant : MonoBehaviour
     }
     private void SpawnSK()
     {
+        Animator.SetBool("Idle?", false);
+        Animator.SetFloat("StateNecromant", 0);
         if (MskeletCount == 0 && CanSpawn == true) 
         {
             for (int i = 0;i < 4;i++)      
@@ -99,17 +104,21 @@ public class Necromant : MonoBehaviour
                 CanSpawn = false;   
             }
         }
+        Animator.SetBool("Idle?", true);
         if (CRIsWork)
         StartCoroutine(StartingM());
     }
 
     private void Teleport()
     {
-        float PositionX = Random.Range(-5,5);
+        Animator.SetBool("Idle?", false);
+        Animator.SetFloat("StateNecromant", 1);
+        float PositionX = Random.Range(-5, 5);
         float PositionY = Random.Range(0, 10);
         transform.position = new Vector2 (PositionX,PositionY);
         if (transform.position.x >= 4 && transform.position.x <= -4) transform.position = new Vector2(0, transform.position.y);
         if (transform.position.y >= 4 && transform.position.y <= -4) transform.position = new Vector2(transform.position.x, 10);
+        Animator.SetBool("Idle?", true);
     }
 
     private void FBatle()
@@ -119,6 +128,9 @@ public class Necromant : MonoBehaviour
             Spawned = Instantiate(Hands);
             Spawned.transform.position = new Vector2(0, 10);
         }
+        Animator.SetBool("Idle?", false);
+        Animator.SetFloat("StateNecromant", 1);
+        Animator.SetBool("Idle?", true);
         transform.position = new Vector2(100, 100);
     }
 
