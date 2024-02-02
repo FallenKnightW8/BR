@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Audio;
 using Random = UnityEngine.Random;
@@ -12,7 +13,6 @@ public class FallenKnight : MonoBehaviour
     [SerializeField]private bool PlayerInAttackR = false;
     [SerializeField] private int Health = 30;
     [SerializeField] private int Damage = 2;
-    [SerializeField] private SpawnShot[] Spawn;
     
     private AudioSource audioSource;
     private bool FStarted = false;
@@ -117,9 +117,21 @@ public class FallenKnight : MonoBehaviour
 
     private void AimSwods() //second attack
     {
-        for (int i = 0; i < (Spawn.Length - 4*(Convert.ToInt32(Mathf.Round(Health / 10)))) ; i++)
+        int DirectionX = Random.Range(0, 1);
+        for (int i = 0; i < (13 - 4*(Convert.ToInt32(Mathf.Round(Health / 10)))) ; i++)
         {
-            
+            Vector2 RandomP;
+            if (DirectionX == 1)
+            {
+                //were atack
+            }
+            GameObject Spawned = Instantiate(AimSword, RandomP, Quaternion.identity);
+            Vector3 targ = Spawned.transform.position;
+            Vector3 objectPos = Player.transform.position;
+            targ.x -= objectPos.x;
+            targ.y -= objectPos.y;
+            float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
+            Spawned.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
         }
         transform.position = new Vector2(0,23);
         Attacking = false;
