@@ -1602,7 +1602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c556c77558fb8418c9afeb5a70493c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phs: {fileID: 0}
+  phs: {fileID: 776892971610017633}
   Collider: {fileID: 0}
   IconSpell: {fileID: 1236531712913578398}
   Shield: {fileID: 7879596715563559915}
