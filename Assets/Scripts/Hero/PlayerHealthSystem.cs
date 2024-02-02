@@ -18,7 +18,7 @@ public class PlayerHealthSystem : MonoBehaviour
 
     public void SetHealth(int heal)
     {
-        Health += heal
+        Health += heal;
     }
 
     public void SetHeart(int heart)
