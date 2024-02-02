@@ -1054,9 +1054,9 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 32
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1080, y: 1900}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.7
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1553,7 +1553,6 @@ MonoBehaviour:
   attackPointChangePosition: 0.2
   playerCombat: {fileID: 3926180992031216543}
   animator: {fileID: 0}
-  FacingLeft: 0
 --- !u!114 &3926180992031216543
 MonoBehaviour:
   m_ObjectHideFlags: 0

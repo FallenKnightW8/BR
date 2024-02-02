@@ -6,13 +6,17 @@ using UnityEngine.UI;
 public class PlayerHealthSystem : MonoBehaviour
 {
     [SerializeField] private int MaxHealthNew;
-    [SerializeField] private int MaxHealthOld; // MaxValue in slider
-    [SerializeField] private int Health; // Value in slider
+    [SerializeField] private int MaxHealthOld;
+    [SerializeField] private int Health;
     [SerializeField] private Slider mySlider;
     [SerializeField] private RectTransform NoLiveImage;
 
-    // Start is called before the first frame update
-    void Start()
+    public void GetDamage(int damage)
+    {
+        Health -= damage;
+    }
+
+    private void Start()
     {
         Health = MaxHealthOld;
         mySlider.maxValue = MaxHealthOld;
@@ -20,15 +24,9 @@ public class PlayerHealthSystem : MonoBehaviour
         NoLiveImage.offsetMax += new Vector2(MaxHealthOld / 2 * 100, 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         ChangeHealth();
-    }
-
-    public void GetDamage(int damage)
-    {
-        Health -= damage;
     }
 
     private void ChangeHealth()

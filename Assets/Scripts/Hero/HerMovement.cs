@@ -28,9 +28,13 @@ public class HerMovement : MonoBehaviour
 
     [Header("Animations")]
     [SerializeField] private Animator animator;
-    [SerializeField] private bool FacingLeft = false;
 
-    void Start()
+    public Vector2 getDirection()
+    {
+        return Direction;
+    }
+
+    private void Start()
     {
         ActivityMoveSpeed = MoveSpeed;
 
@@ -39,17 +43,11 @@ public class HerMovement : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
         MoveAndDash();
-        CheckFlip();
         ChangeAttackPosition();
         //Debug.Log("x and y" + "" + Direction.x + "" + Direction.y);
-    }
-
-    public Vector2 getDirection()
-    {
-        return Direction;
     }
 
     private void MoveAndDash()
@@ -59,12 +57,12 @@ public class HerMovement : MonoBehaviour
 
         Direction.Normalize();
 
-        RigidbodyVelocity = Direction.x * ActivityMoveSpeed;
-
         Rigidbody.velocity = Direction * ActivityMoveSpeed;
 
         // Animations
-        //animator.SetFloat("RigidbodyVelocity", Mathf.Abs(RigidbodyVelocity));
+        animator.SetFloat("Horizontal", Direction.x);
+        animator.SetFloat("Vertical", Direction.y);
+        animator.SetFloat("Speed", Rigidbody.velocity.sqrMagnitude);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -122,26 +120,5 @@ public class HerMovement : MonoBehaviour
         {
             playerCombat.SetAttackPointPosition(new Vector3(Rigidbody.transform.position.x, Rigidbody.transform.position.y + -attackPointChangePosition, 0));
         }
-    }
-
-    private void CheckFlip()
-    {
-        if (Direction.x < 0 && FacingLeft)
-        {
-            Flip();
-        }
-        else if (Direction.x > 0 && !FacingLeft)
-        {
-            Flip();
-        }
-    }
-
-    private void Flip()
-    {
-        FacingLeft = !FacingLeft;
-
-        Vector3 theScale = SpriteObject.transform.localScale;
-        theScale.x *= -1;
-        SpriteObject.transform.localScale = theScale;
     }
 }
