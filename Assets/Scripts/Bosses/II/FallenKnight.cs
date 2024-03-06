@@ -125,7 +125,7 @@ public class FallenKnight : MonoBehaviour
             {
                 //were atack
             }
-            GameObject Spawned = Instantiate(AimSword, RandomP, Quaternion.identity);
+            GameObject Spawned = Instantiate(AimSword,transform.position, Quaternion.identity);
             Vector3 targ = Spawned.transform.position;
             Vector3 objectPos = Player.transform.position;
             targ.x -= objectPos.x;
