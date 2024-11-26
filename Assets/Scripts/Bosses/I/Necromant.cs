@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class Necromant : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class Necromant : MonoBehaviour
     [SerializeField] private GameObject MSkelet;
     [SerializeField] private GameObject BSkelet;
     [SerializeField] private GameObject Hands;
+    [SerializeField] private Slider HealthBar;
     [SerializeField] private int MskeletCount = 0;
     [SerializeField] private int Health = 20;
     [SerializeField] private Animator Animator;
@@ -27,6 +28,7 @@ public class Necromant : MonoBehaviour
     {
         audioSource = GameObject.FindWithTag("Mysic").GetComponent<AudioSource>();
         audioSource.SendMessage("ChangerMys", 1);
+        HealthBar.value = Health;
     }
     private void FixedUpdate()
     {
@@ -55,6 +57,7 @@ public class Necromant : MonoBehaviour
         Animator.SetFloat("StateNecromant", 1);
         Health -= Damage;
         GetDamageC++;
+        HealthBar.value = Health;
         if (GetDamageC % 2 == 0) { Teleport(); GetDamageC = 0; }
 
         if (Health <= 5 && CountFStadia == true)
@@ -76,10 +79,12 @@ public class Necromant : MonoBehaviour
     private void MSkeletDied (int value) 
     {
         MskeletCount -= value;
+        if (MskeletCount == 0) CRIsWork = true;
     }
     private void BSkeletDied(int value)
     {
         BskeletCount -= value;
+        if (BskeletCount == 0) CRIsWork = true;
     }
     private void SpawnSK()
     {

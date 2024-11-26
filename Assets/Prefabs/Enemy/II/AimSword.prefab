@@ -121,7 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  Timing: 2
+  Timing: 0.5
+  Damage: 1
 --- !u!1 &8818693274472997719
 GameObject:
   m_ObjectHideFlags: 0

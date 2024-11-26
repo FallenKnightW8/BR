@@ -6,6 +6,7 @@ public class AimProjectail : MonoBehaviour
 {
     [SerializeField] private GameObject Player;
     [SerializeField] private float Timing;
+    [SerializeField] private int Damage = 1;
     private float speed = 0.1f;
     private bool IsDestroying = false;
     private bool Aiming = true;
@@ -20,10 +21,18 @@ public class AimProjectail : MonoBehaviour
         StartCoroutine(TimeToAim());
         FlyToPlayer();
         if (Aiming)
-        RotateToPlayer();
+            RotateToPlayer();
+
         if (!IsDestroying) StartCoroutine(TimeToDie());
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.SendMessage("GetDamage", Damage);
+            Destroy(gameObject);
+        }
+    }
     private void FlyToPlayer()
     {
         transform.Translate(50 * speed * Time.deltaTime * Vector3.up);

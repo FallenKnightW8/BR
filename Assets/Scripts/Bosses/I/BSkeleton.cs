@@ -51,7 +51,7 @@ public class BSkeleton : MonoBehaviour
     private IEnumerator AttakCuldown() 
     {
         Shoted = true;
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(3);
         Attack();
         Shoted = false;
         StopAllCoroutines();

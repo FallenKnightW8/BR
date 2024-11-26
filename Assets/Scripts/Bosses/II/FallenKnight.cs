@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class FallenKnight : MonoBehaviour
@@ -10,6 +11,7 @@ public class FallenKnight : MonoBehaviour
     [SerializeField] private GameObject Player;
     [SerializeField] private GameObject Sword;
     [SerializeField] private GameObject AimSword;
+    [SerializeField] private Slider HealthBar;
     [SerializeField]private bool PlayerInAttackR = false;
     [SerializeField] private int Health = 30;
     [SerializeField] private int Damage = 2;
@@ -23,6 +25,7 @@ public class FallenKnight : MonoBehaviour
     {
         audioSource = GameObject.FindWithTag("Mysic").GetComponent<AudioSource>();
         audioSource.SendMessage("ChangerMys", 5);
+        HealthBar.value = Health;
     }
     private void FixedUpdate()
     {
@@ -43,6 +46,7 @@ public class FallenKnight : MonoBehaviour
     private void GetDamage(int Damage)
     {
         Health -= Damage;
+        HealthBar.value = Health; 
     }
         
     public void ChangePlayerR(bool Check)
