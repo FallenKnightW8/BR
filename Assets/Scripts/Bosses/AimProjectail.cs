@@ -30,7 +30,7 @@ public class AimProjectail : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.SendMessage("GetDamage", Damage);
-            Destroy(gameObject);
+            DestroyBySword();
         }
     }
     private void FlyToPlayer()
@@ -56,6 +56,14 @@ public class AimProjectail : MonoBehaviour
     {
         IsDestroying = true;
         yield return new WaitForSeconds(5);
-        Destroy(gameObject);
+        DestroyBySword();
+    }
+    private void DestroyBySword()
+    {
+        Destroy(this.gameObject);
+    }
+    public void GetHit()
+    {
+        DestroyBySword();
     }
 }
