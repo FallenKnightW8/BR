@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Death : MonoBehaviour
 {
-
+    [SerializeField] private GameObject Lose;
     private HerMovement ScriptHeroMovment;
     private Dash ScriptDashes;
     private PlayerHealthSystem ScriptPlayerHealthSystem;
@@ -43,6 +43,7 @@ public class Death : MonoBehaviour
             ScriptHeroMovment.SetActivityMoveSpeed(0);
 
             transform.position = transform.position;
+            Lose.SetActive(true);
         }
     }
 }
