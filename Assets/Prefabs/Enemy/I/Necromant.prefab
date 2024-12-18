@@ -91,8 +91,11 @@ MonoBehaviour:
   MskeletCount: 0
   Health: 20
   Animator: {fileID: 3479933699024458278}
-  AimFire: {fileID: 7655901140820352760, guid: d167fa2483ecd604ab594f3f72fcd4ff, type: 3}
-  CountOfFireAi: 3
+  AimFire: {fileID: 7071377017263211062, guid: 02665f0beca92674e83c45b09d0e72f7, type: 3}
+  CircleFire: {fileID: 7071377017263211062, guid: 92b22904253b02745a26f4080f6c868f, type: 3}
+  Fire: {fileID: 7071377017263211062, guid: febc71c73ed998e46acf2fbb80e6a081, type: 3}
+  CountOfFireAi: 4
+  CountOfFire: 12
   FStadia: 0
 --- !u!61 &6702736536656116486
 BoxCollider2D:

@@ -11,7 +11,7 @@ public class ProjecTile : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Translate(50 * speed * Time.deltaTime * Vector3.up);
+        transform.Translate(2 * speed * Time.deltaTime * Vector3.up);
         if (!IsDestroying )
         StartCoroutine(TimeToDie());
     }

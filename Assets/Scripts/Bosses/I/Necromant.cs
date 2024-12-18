@@ -15,9 +15,13 @@ public class Necromant : MonoBehaviour
     [SerializeField] private int MskeletCount = 0;
     [SerializeField] private int Health = 20;
     [SerializeField] private Animator Animator;
+    [Header("Attacks")]
     [SerializeField] private GameObject AimFire;
+    [SerializeField] private GameObject CircleFire;
+    [SerializeField] private GameObject Fire;
 
-    [SerializeField] private int CountOfFireAi = 3;
+    [SerializeField] private int CountOfFireAi = 360;
+    [SerializeField] private int CountOfFire = 360;
 
     private AudioSource audioSource;
 
@@ -28,7 +32,7 @@ public class Necromant : MonoBehaviour
     public bool FStadia = false;
     private bool CountFStadia = true;
     private int GetDamageC = 0;
-
+    private bool CanAttack = true;
     private void Awake()
     {
         audioSource = GameObject.FindWithTag("Mysic").GetComponent<AudioSource>();
@@ -63,7 +67,7 @@ public class Necromant : MonoBehaviour
         Health -= Damage;
         GetDamageC++;
         HealthBar.value = Health;
-        if (GetDamageC % 2 == 0) { Teleport(); GetDamageC = 0; }
+        if (GetDamageC % 2 == 0) { Teleport(); GetDamageC = 0; CountOfFireAi+=2; CountOfFire = CountOfFire + 2; }
 
         if (Health <= 5 && CountFStadia == true)
         {
@@ -74,17 +78,25 @@ public class Necromant : MonoBehaviour
 
     private void BatelMind()
     {
-        int RandomAttack = Random.Range(1, 1);
-        switch (RandomAttack)
+        if (CanAttack)
         {
-            case 0:
-                SpawnSK();
-                break;
-            case 1:
-                SpawnAimFire();
-                break;
+            int RandomAttack = Random.Range(1, 4);
+            switch (RandomAttack)
+            {
+                case 0:
+                    SpawnSK();
+                    break;
+                case 1:
+                    SpawnAimFire();
+                    break;
+                case 2:
+                    SpawnFireCircle();
+                    break;
+                case 3:
+                    RoundShoot();
+                    break;
+            }
         }
-        SpawnSK();
 
         if(Health <=0) 
         {
@@ -140,10 +152,37 @@ public class Necromant : MonoBehaviour
 
     private void SpawnAimFire()
     {
-        for (int i = -1; i < CountOfFireAi -1; i++)
+        for (int i = 0; i < CountOfFireAi; i++)
         {
-            Vector3 AroundP = new Vector3(transform.position.x, transform.position.y * i, transform.position.z);
-            Instantiate(AimFire, transform.position, Quaternion.identity);
+            Vector3 AroundP = new Vector3(transform.position.x + (i * 1.5f), transform.position.y +(i * 1.5f), transform.position.z);
+            GameObject Fire = Instantiate(AimFire, AroundP, Quaternion.identity);
+        }
+        StartCoroutine(CouldownFAttack());
+    }
+
+    private void RoundShoot()
+    {
+
+        for (int i = 0; i < CountOfFire; i++)
+        {
+            float P = 360 / CountOfFire;
+            P = P * i * Mathf.PI / 180;
+            Vector3 AroundP = new Vector3(transform.position.x + (Mathf.Cos(P) * 2), transform.position.y + (2 * Mathf.Sin(P)), transform.position.z);
+            GameObject Spawned = Instantiate(Fire, AroundP, Quaternion.identity);
+            Spawned.transform.rotation = Quaternion.Euler(0, 0, 360 / (CountOfFire) * i);
+        }
+
+        StartCoroutine(CouldownFAttack());
+    }
+    private void SpawnFireCircle()
+    {
+        for (int i = 1; i < CountOfFireAi + 1; i++)
+        {
+            float P = 360 / CountOfFireAi;
+            P = P * i * Mathf.PI / 180;
+            Vector3 AroundP = new Vector3(Player.transform.position.x + ( Mathf.Cos(P) *3), Player.transform.position.y + (3 *Mathf.Sin(P)), Player.transform.position.z);
+            Instantiate(CircleFire, AroundP, Quaternion.identity);
+            StartCoroutine(CouldownFAttack());
         }
     }
 
@@ -178,5 +217,13 @@ public class Necromant : MonoBehaviour
         Player.SendMessage("SetHeart", 2);
         Player.SendMessage("SetHealth",10);
         Destroy(gameObject);
+    }
+
+    private IEnumerator CouldownFAttack()
+    {
+        CanAttack = false;
+        yield return new WaitForSeconds(1.5f);
+        CanAttack = true;
+        StopCoroutine(CouldownFAttack());
     }
 }
