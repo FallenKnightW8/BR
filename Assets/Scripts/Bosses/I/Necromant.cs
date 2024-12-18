@@ -58,13 +58,13 @@ public class Necromant : MonoBehaviour
         }
         if (Player == null)
             Player = GameObject.FindWithTag("Player");
-        if (FStadia == false)
+        if (FStadia == false && Health >0)
             BatelMind();
-        else if (FStadia == true)
+        /*else if (FStadia == true)
         {
             FStadia = false;
             FBatle();
-        }
+        }*/
     }
     private IEnumerator StartingM()
     {
@@ -77,15 +77,16 @@ public class Necromant : MonoBehaviour
 
     private void GetDamage(int Damage)
     {
+        Health -= Damage;
         float HealthF = MaxHealth;
         HealthBar.fillAmount = Health / HealthF;
 
         Animator.SetBool("Idle?", false);
         Animator.SetFloat("StateNecromant", 1);
-        Health -= Damage;
+        
         GetDamageC++;
 
-        if (GetDamageC % 2 == 0) { Teleport(); GetDamageC = 0; CountOfFireAi+=2; CountOfFire = CountOfFire + 2; }
+        if (GetDamageC % 2 == 0 && Health!=0) { Teleport(); GetDamageC = 0; CountOfFireAi+=2; CountOfFire = CountOfFire + 2; }
 
         if (Health <= 5 && CountFStadia == true)
         {
@@ -213,7 +214,7 @@ public class Necromant : MonoBehaviour
 
     private void FBatle()
     {
-        audioSource.SendMessage("ChangerMys", 2);
+        //audioSource.SendMessage("ChangerMys", 2);
         Animator.SetFloat("StateNecromant", 0);
         for (int i = 0; i < 2; i++)
         {
@@ -228,7 +229,8 @@ public class Necromant : MonoBehaviour
 
     private void Died()
     {
-        Animator.SetTrigger("Die");
+        Animator.SetTrigger("IsDie?");
+        Debug.Log("Died konch");
         //audioSource.SendMessage("ChangerMys", 3);
         //Player.SendMessage("SetHeart", 2);
         //Player.SendMessage("SetHealth",10);
