@@ -1,15 +1,13 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealthSystem : MonoBehaviour
 {
-    [SerializeField] private int MaxHealthNew;
-    [SerializeField] private int MaxHealthOld;
+    [SerializeField] private int MaxHealt;
     [SerializeField] private int Health;
-    [SerializeField] private Slider mySlider;
-    [SerializeField] private RectTransform NoLiveImage;
+    [SerializeField] private Image ImageLive;
 
     public void GetDamage(int damage)
     {
@@ -21,18 +19,10 @@ public class PlayerHealthSystem : MonoBehaviour
         Health += heal;
     }
 
-    public void SetHeart(int heart)
-    {
-        MaxHealthNew += heart;
-    }
-
     private void Start()
     {
-        Health = MaxHealthOld;
-        mySlider.maxValue = MaxHealthOld;
-        MaxHealthNew = MaxHealthOld;
-
-        NoLiveImage.offsetMax += new Vector2(MaxHealthOld / 2 * 100, 0);
+        Health = MaxHealt;
+        ImageLive.fillAmount = 1f; // Шкала заполнена в начале
     }
 
     private void Update()
@@ -40,19 +30,18 @@ public class PlayerHealthSystem : MonoBehaviour
         ChangeHealth();
     }
 
+    private void UpdateHealthUi()
+    {
+        float HealthF = MaxHealt;
+        ImageLive.fillAmount = Health / HealthF;
+    }
+
     private void ChangeHealth()
     {
-        if (MaxHealthOld < MaxHealthNew)
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            NoLiveImage.offsetMax = new Vector2((MaxHealthNew / 2 * 100 + 30), -30);
-            mySlider.maxValue = MaxHealthNew;
-            Health += MaxHealthNew - MaxHealthOld;
-            MaxHealthOld = MaxHealthNew;
+            GetDamage(1);
+            UpdateHealthUi();
         }
-        if (Health > MaxHealthOld)
-        {
-            Health = MaxHealthOld;
-        }
-        mySlider.value = Health;
     }
 }
