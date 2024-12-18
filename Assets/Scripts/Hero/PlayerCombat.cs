@@ -79,7 +79,7 @@ public class PlayerCombat : MonoBehaviour
         {
             // Наносим урон врагу
             enemy.SendMessage("GetDamage", damage);
-            Debug.Log("We hit " + enemy.name);
+            //Debug.Log("We hit " + enemy.name);
         }
     }
 
