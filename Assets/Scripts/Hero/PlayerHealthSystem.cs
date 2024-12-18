@@ -8,15 +8,22 @@ public class PlayerHealthSystem : MonoBehaviour
     [SerializeField] private int MaxHealt;
     [SerializeField] private int Health;
     [SerializeField] private Image ImageLive;
+    [SerializeField] private HerMovement ScriptHeroMovment;
 
     public void GetDamage(int damage)
     {
         Health -= damage;
+        UpdateHealthUi();
     }
 
     public void SetHealth(int heal)
     {
         Health += heal;
+    }
+
+    public int GetHealth()
+    {
+        return Health;
     }
 
     private void Start()
@@ -25,23 +32,9 @@ public class PlayerHealthSystem : MonoBehaviour
         ImageLive.fillAmount = 1f; // Шкала заполнена в начале
     }
 
-    private void Update()
-    {
-        ChangeHealth();
-    }
-
     private void UpdateHealthUi()
     {
         float HealthF = MaxHealt;
         ImageLive.fillAmount = Health / HealthF;
-    }
-
-    private void ChangeHealth()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            GetDamage(1);
-            UpdateHealthUi();
-        }
     }
 }

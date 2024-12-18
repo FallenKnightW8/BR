@@ -11,9 +11,10 @@ public class Necromant : MonoBehaviour
     [SerializeField] private GameObject MSkelet;
     [SerializeField] private GameObject BSkelet;
     [SerializeField] private GameObject Hands;
-    [SerializeField] private Slider HealthBar;
+    [SerializeField] private Image HealthBar;
     [SerializeField] private int MskeletCount = 0;
     [SerializeField] private int Health = 20;
+    [SerializeField] private int MaxHealth;
     [SerializeField] private Animator Animator;
     [Header("Attacks")]
     [SerializeField] private GameObject AimFire;
@@ -33,12 +34,20 @@ public class Necromant : MonoBehaviour
     private bool CountFStadia = true;
     private int GetDamageC = 0;
     private bool CanAttack = true;
-    private void Awake()
+
+
+    private void Start()
+    {
+        HealthBar.fillAmount = 1f;
+        MaxHealth = Health;
+    }
+
+    /*private void Awake()
     {
         audioSource = GameObject.FindWithTag("Mysic").GetComponent<AudioSource>();
         audioSource.SendMessage("ChangerMys", 1);
-        HealthBar.value = Health;
-    }
+    }*/
+
     private void FixedUpdate()
     {
         if (Player == null)
@@ -62,11 +71,14 @@ public class Necromant : MonoBehaviour
 
     private void GetDamage(int Damage)
     {
+        float HealthF = MaxHealth;
+        HealthBar.fillAmount = Health / HealthF;
+
         Animator.SetBool("Idle?", false);
         Animator.SetFloat("StateNecromant", 1);
         Health -= Damage;
         GetDamageC++;
-        HealthBar.value = Health;
+
         if (GetDamageC % 2 == 0) { Teleport(); GetDamageC = 0; CountOfFireAi+=2; CountOfFire = CountOfFire + 2; }
 
         if (Health <= 5 && CountFStadia == true)

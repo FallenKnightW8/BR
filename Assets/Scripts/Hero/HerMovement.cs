@@ -17,6 +17,11 @@ public class HerMovement : MonoBehaviour
         return Direction;
     }
 
+    public void SetDirection(Vector2 direction)
+    {
+        Direction = direction;
+    }
+
     public float GetActivityMoveSpeed()
     {
         return ActivityMoveSpeed;
