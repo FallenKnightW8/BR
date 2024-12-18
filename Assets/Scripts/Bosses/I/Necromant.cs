@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,6 +15,10 @@ public class Necromant : MonoBehaviour
     [SerializeField] private int MskeletCount = 0;
     [SerializeField] private int Health = 20;
     [SerializeField] private Animator Animator;
+    [SerializeField] private GameObject AimFire;
+
+    [SerializeField] private int CountOfFireAi = 3;
+
     private AudioSource audioSource;
 
     private GameObject Spawned;
@@ -69,6 +74,16 @@ public class Necromant : MonoBehaviour
 
     private void BatelMind()
     {
+        int RandomAttack = Random.Range(1, 1);
+        switch (RandomAttack)
+        {
+            case 0:
+                SpawnSK();
+                break;
+            case 1:
+                SpawnAimFire();
+                break;
+        }
         SpawnSK();
 
         if(Health <=0) 
@@ -76,6 +91,8 @@ public class Necromant : MonoBehaviour
             Died();
         }
     }
+
+
     private void MSkeletDied (int value) 
     {
         MskeletCount -= value;
@@ -119,6 +136,15 @@ public class Necromant : MonoBehaviour
         Animator.SetBool("Idle?", true);
         if (CRIsWork)
         StartCoroutine(StartingM());
+    }
+
+    private void SpawnAimFire()
+    {
+        for (int i = -1; i < CountOfFireAi -1; i++)
+        {
+            Vector3 AroundP = new Vector3(transform.position.x, transform.position.y * i, transform.position.z);
+            Instantiate(AimFire, transform.position, Quaternion.identity);
+        }
     }
 
     private void Teleport()
