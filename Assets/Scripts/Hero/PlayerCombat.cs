@@ -47,8 +47,10 @@ public class PlayerCombat : MonoBehaviour
     // Изменение позиции точки атаки
     private void ChangeAttackPosition()
     {
-        // Получаем текущую позицию мыши в мировых координатах
+        // Получаем текущую позицию мыши в мировых координатах и ограничеваем их по ширине и высоте экрана
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.x = Mathf.Clamp(mousePosition.x, 0, Screen.width);
+        mousePosition.y = Mathf.Clamp(mousePosition.y, 0, Screen.height);
         mousePosition.z = 0; // Устанавливаем Z в 0
 
         // Вычисляем направление от игрока к мыши
