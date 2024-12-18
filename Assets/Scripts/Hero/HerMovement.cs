@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class HerMovement : MonoBehaviour
@@ -47,18 +47,30 @@ public class HerMovement : MonoBehaviour
         Move();
     }
 
+    private void FixedUpdate()
+    {
+        Rigidbody.velocity = Direction * ActivityMoveSpeed;
+    }
+
     private void Move()
     {
-        Direction.x = Input.GetAxis("Horizontal");
-        Direction.y = Input.GetAxis("Vertical");
+        // Получаем ввод по горизонтали и вертикали
+        Direction.x = Input.GetAxisRaw("Horizontal"); // -1 для влево, 1 для вправо
+        Direction.y = Input.GetAxisRaw("Vertical");   // -1 для вниз, 1 для вверх
 
+        // Нормализуем вектор для равномерного движения по диагонали
         Direction.Normalize();
 
-        Rigidbody.velocity = Direction * ActivityMoveSpeed;
-
-        // Animations
-        animator.SetFloat("Horizontal", Direction.x);
-        animator.SetFloat("Vertical", Direction.y);
+        // Анимации
+        if (Direction.x != 0 || Direction.y != 0)
+        {
+            animator.SetFloat("Horizontal", Direction.x);
+            animator.SetFloat("Vertical", Direction.y);
+        }
         animator.SetFloat("Speed", Rigidbody.velocity.sqrMagnitude);
+
+        if (Direction.x > 0) { animator.SetFloat("IdleLeftRight", 1); }
+        else if (Direction.x < 0) { animator.SetFloat("IdleLeftRight", -1); }
+             
     }
 }

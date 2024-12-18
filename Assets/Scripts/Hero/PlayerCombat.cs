@@ -1,36 +1,26 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    // ----> Uncomment
-    // private Animator animator;
     [SerializeField] private HerMovement scriptMovment;
     [SerializeField] private Rigidbody2D Rigidbody;
 
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private float attackPointChangePosition = 0.2f;
+    [SerializeField] private float attackRate = 2f;
+    [SerializeField] private float nextAttackTime = 2f;
+
+    [SerializeField] private Vector3 directionToMouse;
 
     [SerializeField] private LayerMask enemyLayers;
 
     [SerializeField] private int damage = 1;
 
-    public void setDamage(int _damage)
-    {
-        damage = _damage;
-    }
-
-    public int getDamage()
-    {
-        return damage;
-    }
-
-    public void SetAttackPointPosition(Vector3 _position)
-    {
-        attackPoint.position = _position;
-    }
+    [Header("Animations")]
+    [SerializeField] private Animator animator;
 
     private void Awake()
     {
@@ -40,30 +30,55 @@ public class PlayerCombat : MonoBehaviour
 
     private void Update()
     {
+        // Меняем позицию точки атаки в зависимости от положения мыши
         ChangeAttackPosition();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        // Проверяем возможность атаки
+        if (Time.time >= nextAttackTime)
         {
-            Attack();
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Attack();
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
         }
     }
 
-    // Enemy attack and debug hit
+    // Изменение позиции точки атаки
+    private void ChangeAttackPosition()
+    {
+        // Получаем текущую позицию мыши в мировых координатах
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0; // Устанавливаем Z в 0
+
+        // Вычисляем направление от игрока к мыши
+        Vector3 directionToMouse = (mousePosition - Rigidbody.transform.position).normalized;
+        animator.SetFloat("MouseDetectX", directionToMouse.x);
+
+        // Устанавливаем новую позицию точки атаки
+        SetAttackPointPosition(new Vector3(
+            Rigidbody.transform.position.x + directionToMouse.x * attackPointChangePosition,
+            Rigidbody.transform.position.y + directionToMouse.y * attackPointChangePosition,
+            0
+        ));
+
+    }
+
+    // Метод атаки
     private void Attack()
     {
-        // ----> Uncomment
-        // Play an attack
-        // animator.SetTrigger("Attack");
+        // Запускаем анимацию атаки
+        animator.SetTrigger("Attack");
 
-        // Detect enemy
+        // Определяем врагов в радиусе атаки
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
-        foreach(Collider2D enemy in hitEnemies)
+        foreach (Collider2D enemy in hitEnemies)
         {
+            // Наносим урон врагу
             enemy.SendMessage("GetDamage", damage);
             Debug.Log("We hit " + enemy.name);
         }
-
     }
 
     private void OnDrawGizmosSelected()
@@ -74,26 +89,20 @@ public class PlayerCombat : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    private void ChangeAttackPosition()
+    // Устанавливаем позицию точки атаки
+    public void SetAttackPointPosition(Vector3 _position)
     {
-        // Check player direction of X
-        if (scriptMovment.GetDirection().x > 0)
-        {
-            SetAttackPointPosition(new Vector3(Rigidbody.transform.position.x + attackPointChangePosition, Rigidbody.transform.position.y, 0));
-        }
-        else if (scriptMovment.GetDirection().x < 0)
-        {
-            SetAttackPointPosition(new Vector3(Rigidbody.transform.position.x + -attackPointChangePosition, Rigidbody.transform.position.y, 0));
-        }
+        attackPoint.position = _position;
+    }
 
-        // Check player direction of Y
-        if (scriptMovment.GetDirection().y > 0)
-        {
-            SetAttackPointPosition(new Vector3(Rigidbody.transform.position.x, Rigidbody.transform.position.y + attackPointChangePosition, 0));
-        }
-        else if (scriptMovment.GetDirection().y < 0)
-        {
-            SetAttackPointPosition(new Vector3(Rigidbody.transform.position.x, Rigidbody.transform.position.y + -attackPointChangePosition, 0));
-        }
+    // Методы для работы с уроном
+    public void setDamage(int _damage)
+    {
+        damage = _damage;
+    }
+
+    public int getDamage()
+    {
+        return damage;
     }
 }
