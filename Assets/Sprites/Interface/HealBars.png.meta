@@ -1,19 +1,21 @@
 fileFormatVersion: 2
-guid: d2a6fe831575ba74982c360273f31dfa
-AssetOrigin:
-  serializedVersion: 1
-  productId: 40357
-  packageName: Ghost Sprites 2D
-  packageVersion: 1.2
-  assetPath: Assets/GhostSprites2D/Example/Sprites/sword.png
-  uploadId: 92985
+guid: 7d99ed3a7cddb2e49af07b5a9b66828a
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6731836212916529828
+    second: "\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0435 \u0431\u0430\u0440\u043E\u0432_0"
+  - first:
+      213: 3080769621176762974
+    second: "\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0435 \u0431\u0430\u0440\u043E\u0432_1"
+  - first:
+      213: -5488283686543692226
+    second: "\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0435 \u0431\u0430\u0440\u043E\u0432_2"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -37,11 +39,11 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -50,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +72,9 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -141,18 +143,84 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: "\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0435 \u0431\u0430\u0440\u043E\u0432_0"
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 64
+        width: 133
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4aa200d6e594c6d50800000000000000
+      internalID: 6731836212916529828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0435 \u0431\u0430\u0440\u043E\u0432_1"
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 49
+        width: 133
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e524e09d5a711ca20800000000000000
+      internalID: 3080769621176762974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0435 \u0431\u0430\u0440\u043E\u0432_2"
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 37
+        width: 26
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3eedf4b013b5d3b0800000000000000
+      internalID: -5488283686543692226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 8f8747181326bf945b9c9c9b6760cd49
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0435 \u0431\u0430\u0440\u043E\u0432_0": 6731836212916529828
+      "\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0435 \u0431\u0430\u0440\u043E\u0432_1": 3080769621176762974
+      "\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u0435 \u0431\u0430\u0440\u043E\u0432_2": -5488283686543692226
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
