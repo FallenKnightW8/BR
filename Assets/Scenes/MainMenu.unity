@@ -548,7 +548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6713957, y: 0.30074072}
   m_AnchorMax: {x: 0.8381667, y: 0.5}
-  m_AnchoredPosition: {x: -9.363586, y: -81.98001}
+  m_AnchoredPosition: {x: -9.363586, y: -81.98002}
   m_SizeDelta: {x: -72.986, y: -52.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557577805
@@ -1201,7 +1201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 513df576567a2d148aea059ba84cfc31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartScene: Village
+  StartScene: NEWTEST
   SetingPanel: {fileID: 1896860591}
 --- !u!1 &1644883553
 GameObject:

@@ -16,6 +16,8 @@ public class Necromant : MonoBehaviour
     [SerializeField] private int Health = 20;
     [SerializeField] private int MaxHealth;
     [SerializeField] private Animator Animator;
+    [SerializeField] private Win StartWin;
+    [SerializeField] private float LengOfBatle;
     [Header("Attacks")]
     [SerializeField] private GameObject AimFire;
     [SerializeField] private GameObject CircleFire;
@@ -50,6 +52,10 @@ public class Necromant : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Health <= 0)
+        {
+            Died();
+        }
         if (Player == null)
             Player = GameObject.FindWithTag("Player");
         if (FStadia == false)
@@ -110,10 +116,7 @@ public class Necromant : MonoBehaviour
             }
         }
 
-        if(Health <=0) 
-        {
-            Died();
-        }
+
     }
 
 
@@ -200,8 +203,8 @@ public class Necromant : MonoBehaviour
 
     private void Teleport()
     {
-        float PositionX = Random.Range(-5, 5);
-        float PositionY = Random.Range(0, 10);
+        float PositionX = Random.Range(-5, 15);
+        float PositionY = Random.Range(-8, 4);
         transform.position = new Vector2 (PositionX,PositionY);
         if (transform.position.x >= 4 && transform.position.x <= -4) transform.position = new Vector2(0, transform.position.y);
         if (transform.position.y >= 4 && transform.position.y <= -4) transform.position = new Vector2(transform.position.x, 10);
@@ -225,10 +228,12 @@ public class Necromant : MonoBehaviour
 
     private void Died()
     {
-        audioSource.SendMessage("ChangerMys", 3);
-        Player.SendMessage("SetHeart", 2);
-        Player.SendMessage("SetHealth",10);
-        Destroy(gameObject);
+        Animator.SetTrigger("Die");
+        //audioSource.SendMessage("ChangerMys", 3);
+        //Player.SendMessage("SetHeart", 2);
+        //Player.SendMessage("SetHealth",10);
+        StartCoroutine(WaitYouPie());
+
     }
 
     private IEnumerator CouldownFAttack()
@@ -237,5 +242,14 @@ public class Necromant : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         CanAttack = true;
         StopCoroutine(CouldownFAttack());
+    }
+
+    private IEnumerator WaitYouPie()
+    {
+
+        yield return new WaitForSeconds(2);
+        StartWin.WinGame();
+        Destroy(gameObject);
+        StopCoroutine(WaitYouPie());
     }
 }
