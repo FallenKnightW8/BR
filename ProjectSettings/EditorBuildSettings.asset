@@ -8,14 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: d9db2d8a8a826b0428a292a100ddc1e3
-  - enabled: 0
-    path: Assets/Scenes/Village.unity
-    guid: 2d557241bf3857442bd58272a33cdca4
   - enabled: 1
-    path: Assets/Scenes/Dungeon.unity
-    guid: a1982395da79481418dfdaf421814547
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/NEWTEST.unity
+    guid: c70c1cb1b93278b4996e30b10cf49b8d
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
