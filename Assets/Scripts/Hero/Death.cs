@@ -33,6 +33,10 @@ public class Death : MonoBehaviour
     {
         if (ScriptPlayerHealthSystem.GetHealth() <= 0 )
         {
+            if(PlayerPrefs.HasKey("CounterOfDies"))
+                PlayerPrefs.SetInt("CounterOfDies", PlayerPrefs.GetInt("CounterOfDies") + 1);
+            else
+                PlayerPrefs.SetInt("CounterOfDies", 1);
             ScriptHeroMovment.enabled = false;
             ScriptDashes.enabled = false;
             ScriptPlayerHealthSystem.enabled = false;

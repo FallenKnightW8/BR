@@ -29,9 +29,6 @@ public class Necromant : MonoBehaviour
     private AudioSource audioSource;
 
     private GameObject Spawned;
-    private int BskeletCount = 0;
-    private bool CanSpawn = true;
-    private bool CRIsWork = true;
     public bool FStadia = false;
     private bool CountFStadia = true;
     private int GetDamageC = 0;
@@ -44,11 +41,11 @@ public class Necromant : MonoBehaviour
         MaxHealth = Health;
     }
 
-    /*private void Awake()
+    private void Awake()
     {
-        audioSource = GameObject.FindWithTag("Mysic").GetComponent<AudioSource>();
+        audioSource = GameObject.FindWithTag("Player").GetComponent<AudioSource>();
         audioSource.SendMessage("ChangerMys", 1);
-    }*/
+    }
 
     private void FixedUpdate()
     {
@@ -65,14 +62,6 @@ public class Necromant : MonoBehaviour
             FStadia = false;
             FBatle();
         }*/
-    }
-    private IEnumerator StartingM()
-    {
-        CRIsWork = true;
-        yield return new WaitForSeconds(3);
-        CanSpawn = true;
-        CRIsWork = false;
-        StopAllCoroutines();
     }
 
     private void GetDamage(int Damage)
@@ -99,7 +88,7 @@ public class Necromant : MonoBehaviour
     {
         if (CanAttack)
         {
-            int RandomAttack = Random.Range(1, 4);
+            int RandomAttack = Random.Range(0, 4);
             switch (RandomAttack)
             {
                 case 0:
@@ -121,37 +110,26 @@ public class Necromant : MonoBehaviour
     }
 
 
-    private void MSkeletDied (int value) 
-    {
-        MskeletCount -= value;
-        if (MskeletCount == 0) CRIsWork = true;
-    }
-    private void BSkeletDied(int value)
-    {
-        BskeletCount -= value;
-        if (BskeletCount == 0) CRIsWork = true;
-    }
     private void SpawnSK()
     {
         Animator.SetBool("Idle?", false);
         Animator.SetFloat("StateNecromant", 0);
-        if (MskeletCount == 0 && CanSpawn == true) 
+        if (MskeletCount == 0) 
         {
-            for (int i = 0;i < 4;i++)      
+            for (int i = 0;i < 2;i++)      
             {
                 float PositionX = Random.Range(-2,2);
                 float PositionY = Random.Range(-2,2);
                 Spawned = Instantiate(MSkelet);
                 Spawned.transform.position = new Vector2(transform.position.x + PositionX, transform.position.y + PositionY);
                 MskeletCount++;
-                CanSpawn = false;
             }
 
 
         }
-        if (BskeletCount == 0 && CanSpawn == true)
+        /*if (BskeletCount == 0 && CanSpawn == true)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
             {
                 float PositionX = Random.Range(-2, 2);
                 float PositionY = Random.Range(-2, 2);
@@ -160,17 +138,16 @@ public class Necromant : MonoBehaviour
                 BskeletCount++;
                 CanSpawn = false;   
             }
-        }
-        Animator.SetBool("Idle?", true);
-        if (CRIsWork)
-        StartCoroutine(StartingM());
+        }*/ 
     }
 
     private void SpawnAimFire()
     {
         for (int i = 0; i < CountOfFireAi; i++)
         {
-            Vector3 AroundP = new Vector3(transform.position.x + (i * 1.5f), transform.position.y +(i * 1.5f), transform.position.z);
+            int j;
+            j = Random.Range(-1, 2);
+            Vector3 AroundP = new Vector3(j * 10f, 10f, transform.position.z);
             GameObject Fire = Instantiate(AimFire, AroundP, Quaternion.identity);
         }
         StartCoroutine(CouldownFAttack());
@@ -214,7 +191,7 @@ public class Necromant : MonoBehaviour
 
     private void FBatle()
     {
-        //audioSource.SendMessage("ChangerMys", 2);
+        audioSource.SendMessage("ChangerMys", 2);
         Animator.SetFloat("StateNecromant", 0);
         for (int i = 0; i < 2; i++)
         {
@@ -231,7 +208,8 @@ public class Necromant : MonoBehaviour
     {
         Animator.SetTrigger("IsDie?");
         Debug.Log("Died konch");
-        //audioSource.SendMessage("ChangerMys", 3);
+        audioSource.SendMessage("ChangerMys", 3);
+        audioSource.loop = false;
         //Player.SendMessage("SetHeart", 2);
         //Player.SendMessage("SetHealth",10);
         StartCoroutine(WaitYouPie());

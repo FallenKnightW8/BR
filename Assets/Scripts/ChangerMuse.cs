@@ -10,7 +10,7 @@ public class ChangerMuse : MonoBehaviour
 
     private void Start()
     {
-        audioSource.clip = Mysics[0];
+        audioSource.clip = Mysics[1];
         audioSource.Play();
     }
     private void ChangerMys(int Clip)
