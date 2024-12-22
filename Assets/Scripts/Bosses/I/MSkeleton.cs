@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class MSkeleton : MonoBehaviour
@@ -9,14 +9,16 @@ public class MSkeleton : MonoBehaviour
     [SerializeField] private int Health = 2;
     [SerializeField] private float speed = 0.05f;
     [SerializeField] private int Damage = 1;
+    [SerializeField] private SpriteRenderer SpriteColor;
     private bool playerInRange = false;
 
     private Vector2 movement;
     private void GetDamage(int Damage)
     {
         Health -= Damage;
+        UpdateSpriteColor();
     }
-        void FixedUpdate()
+    void FixedUpdate()
     {
         if (transform.position.x >= 5 && transform.position.x <= -5) transform.position = new Vector2(0, transform.position.y);
         if (transform.position.y >= 5 && transform.position.y <= -5) transform.position = new Vector2(transform.position.x, 10);
@@ -62,5 +64,17 @@ public class MSkeleton : MonoBehaviour
             Father.SendMessageUpwards("MSkeletDied", 1);
         }
         Destroy(gameObject);
+    }
+
+    private void UpdateSpriteColor()
+    {
+        SpriteColor.color = new Color(1, 0, 0, 1);
+        StartCoroutine(DisableGhostSpriteAfterDelay(0.1f));
+    }
+
+    private IEnumerator DisableGhostSpriteAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay); // Ожидаем указанное время
+        SpriteColor.color = new Color(1, 1, 1, 1);     // Отключаем компонент
     }
 }

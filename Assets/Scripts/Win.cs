@@ -8,6 +8,7 @@ public class Win : MonoBehaviour
 {
     [SerializeField] GameObject WinPanel;
     [SerializeField] TMP_Text CounterOfDies;
+
     public void WinGame()
     {
         WinPanel.SetActive(true);

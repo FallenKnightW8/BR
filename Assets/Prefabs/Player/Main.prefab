@@ -944,10 +944,10 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8071437732874080253}
   - {fileID: 4644863699593329022}
   - {fileID: 5247068080416108299}
   - {fileID: 1385785736916709330}
+  - {fileID: 8071437732874080253}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8333510213703914847
@@ -1085,10 +1085,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05770704258dc8d498070e5d999daa13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealt: 10
+  MaxHealth: 0
   Health: 10
   ImageLive: {fileID: 3839873608469660196}
   ScriptHeroMovment: {fileID: 0}
+  SpriteRendererColor: {fileID: 0}
+  ScriptHealthRegen: {fileID: 0}
 --- !u!114 &5240139393062187403
 MonoBehaviour:
   m_ObjectHideFlags: 0
