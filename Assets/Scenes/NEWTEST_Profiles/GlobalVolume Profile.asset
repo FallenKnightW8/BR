@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b94fcd11afffcb142908bfcb1e261fba, type: 3}
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -131,13 +131,13 @@ MonoBehaviour:
     value: 1
   focusDistance:
     overrideState: 1
-    value: 10
+    value: 0.95
   aperture:
     overrideState: 1
-    value: 15
+    value: 4
   focalLength:
     overrideState: 1
-    value: 129
+    value: 20
   kernelSize:
     overrideState: 1
     value: 1
@@ -245,13 +245,13 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 0
-    value: {x: 0.9956214, y: 0.98594886, z: 1, w: 0.0061766556}
+    value: {x: 0.9678637, y: 0.9683807, z: 1, w: -0.03088326}
   gamma:
     overrideState: 1
-    value: {x: 0.90486354, y: 0.98413134, z: 1, w: -0.06794327}
+    value: {x: 0.92167217, y: 0.9487092, z: 1, w: -0.08029657}
   gain:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: -0.074119784}
+    value: {x: 0.9720768, y: 0.9716297, z: 1, w: -0.074119784}
   masterCurve:
     overrideState: 0
     value:
