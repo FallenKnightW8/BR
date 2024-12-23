@@ -63,7 +63,7 @@ public class MSkeleton : MonoBehaviour
     {
         playerInRange = Check;
 
-        if (!IsAttack)
+        if (!IsAttack && playerInRange)
         {
             AnimationController.SetTrigger("IsAttack?");
             StartCoroutine(Attack());
@@ -85,8 +85,9 @@ public class MSkeleton : MonoBehaviour
     {
         if (Father != null)
         {
-            Father.SendMessageUpwards("MSkeletDied", 1);
+            Father.SendMessageUpwards("MskeleMSkeletDied", 1);
         }
+        PlayerPrefs.SetFloat("Score", PlayerPrefs.GetFloat("Score") + 1);
         Destroy(gameObject);
     }
 
