@@ -407,7 +407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1416145091097776630, guid: 96cac836152f747488ab30c12969b78a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4085927548336646038, guid: 96cac836152f747488ab30c12969b78a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -28415,7 +28415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5435108320535616357, guid: 9f3e8960a401c204a83b52b2dbd7b435, type: 3}
       propertyPath: m_Name
-      value: Main
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7615399866654063412, guid: 9f3e8960a401c204a83b52b2dbd7b435, type: 3}
       propertyPath: m_LocalScale.x

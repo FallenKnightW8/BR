@@ -95,7 +95,7 @@ public class Necromant : MonoBehaviour
     {
         if (CanAttack)
         {
-            Animator.SetTrigger("Isattack?");
+            Animator.SetTrigger("IsAttack?");
             int RandomAttack = Random.Range(0, 4);
             switch (RandomAttack)
             {

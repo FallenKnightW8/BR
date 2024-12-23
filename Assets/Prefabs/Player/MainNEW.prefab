@@ -168,8 +168,6 @@ GameObject:
   - component: {fileID: 2893188577920243363}
   - component: {fileID: 952701571580654178}
   - component: {fileID: 2280110298673358401}
-  - component: {fileID: 2629346040695643552}
-  - component: {fileID: 3262691097709784679}
   - component: {fileID: 82356401156908296}
   - component: {fileID: 7510862553341802144}
   - component: {fileID: 633682599699665959}
@@ -344,50 +342,6 @@ MonoBehaviour:
   ScriptHeroMovment: {fileID: 2893188577920243363}
   SpriteRendererColor: {fileID: 2261779162712226164}
   ScriptHealthRegen: {fileID: 2541165426304020424}
---- !u!114 &2629346040695643552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5435108320535616357}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c556c77558fb8418c9afeb5a70493c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  phs: {fileID: 2280110298673358401}
-  Collider: {fileID: 0}
-  IconSpell: {fileID: 0}
-  Shield: {fileID: 4320928966219295737}
-  ColldownShieldMax: 5
-  ColldownShield: 0
-  TimeShieldMax: 5
-  TimeShield: 5
-  Damage: 2
---- !u!114 &3262691097709784679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5435108320535616357}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c8cff186bc3d7347a741532119f6aec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  phs: {fileID: 0}
-  pc: {fileID: 0}
-  IconSpell: {fileID: 0}
-  Sword: {fileID: 0}
-  ColldownBaffMax: 10
-  ColldownBaff: 0
-  TimeBaffMax: 5
-  TimeBaff: 5
-  Damage: 2
-  OldDamageAttack: 0
-  BaffDamageAttack: 3
 --- !u!114 &82356401156908296
 MonoBehaviour:
   m_ObjectHideFlags: 0
