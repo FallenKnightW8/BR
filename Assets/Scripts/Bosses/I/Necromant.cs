@@ -193,8 +193,8 @@ public class Necromant : MonoBehaviour
 
     private void Teleport()
     {
-        float PositionX = Random.Range(-5, 15);
-        float PositionY = Random.Range(-8, 4);
+        float PositionX = Random.Range(-10, 10);
+        float PositionY = Random.Range(-8, 8);
         transform.position = new Vector2 (PositionX,PositionY);
         if (transform.position.x >= 4 && transform.position.x <= -4) transform.position = new Vector2(0, transform.position.y);
         if (transform.position.y >= 4 && transform.position.y <= -4) transform.position = new Vector2(transform.position.x, 10);
