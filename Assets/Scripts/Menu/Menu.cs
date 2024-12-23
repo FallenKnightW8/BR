@@ -21,7 +21,6 @@ public class Menu : MonoBehaviour
 
         char[] Tity = new char[100];
         Tity = PlayerPrefs.GetInt("Score").ToString().ToCharArray();
-
         string Titi = "";
         for (int i = 0; i < Tity.Length; i++)
         {
