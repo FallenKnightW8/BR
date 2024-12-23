@@ -14,6 +14,7 @@ public class MSkeleton : MonoBehaviour
     private Animator AnimationController;
     private bool playerInRange = false;
     private bool IsAttack = false;
+    private bool notDie = true;
 
     private Vector2 movement;
 
@@ -33,20 +34,19 @@ public class MSkeleton : MonoBehaviour
 
         if (Player == null)
             Player = GameObject.FindWithTag("Player");
-        AnimationController.SetFloat("Horizontal", GetPlayerHorizontalPos());
+        if (notDie) AnimationController.SetFloat("Horizontal", GetPlayerHorizontalPos());
         if (Father == null)
             Father = GameObject.FindWithTag("Boss");
         if (Rigidbody == null)
             Rigidbody = this.GetComponent<Rigidbody2D>();
-        if (Health <= 0) Died();
-        GetPlayer();
+        if (Health <= 0 && notDie) Died();
+        if(notDie)GetPlayer();
     }
 
     public float GetPlayerHorizontalPos() 
     {
         return Player.transform.position.x - transform.position.x;
     }
-
     private void GetPlayer()
     {
         Vector3 direction = Player.transform.position - transform.position;
@@ -63,7 +63,7 @@ public class MSkeleton : MonoBehaviour
     {
         playerInRange = Check;
 
-        if (!IsAttack && playerInRange)
+        if (!IsAttack && playerInRange && notDie)
         {
             AnimationController.SetTrigger("IsAttack?");
             StartCoroutine(Attack());
@@ -74,7 +74,7 @@ public class MSkeleton : MonoBehaviour
     {
         IsAttack = true;
         yield return new WaitForSeconds(0.3f);
-        if (playerInRange)
+        if (playerInRange && notDie)
         {
             Player.SendMessage("GetDamage", Damage);
         }
@@ -83,12 +83,15 @@ public class MSkeleton : MonoBehaviour
     }    
     private void Died()
     {
+        notDie = false;
         if (Father != null)
         {
             Father.SendMessageUpwards("MskeleMSkeletDied", 1);
         }
-        PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score") + 1);
-        Destroy(gameObject);
+        transform.position = new Vector3(transform.position.x,transform.position.y - 0.5f,0);
+        Rigidbody.simulated = false;
+        AnimationController.SetTrigger("IsDie?");
+        StartCoroutine(TimeToDie());
     }
 
     private void UpdateSpriteColor()
@@ -97,6 +100,12 @@ public class MSkeleton : MonoBehaviour
         StartCoroutine(DisableGhostSpriteAfterDelay(0.1f));
     }
 
+    private IEnumerator TimeToDie()
+    {
+        yield return new WaitForSeconds(1f);
+        PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score") + 1);
+        Destroy(gameObject);
+    }
     private IEnumerator DisableGhostSpriteAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay); // Ожидаем указанное время
