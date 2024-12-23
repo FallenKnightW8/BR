@@ -534,7 +534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5360386021087794804, guid: 96cac836152f747488ab30c12969b78a, type: 3}
       propertyPath: MskeletCount
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6291906618853265999, guid: 96cac836152f747488ab30c12969b78a, type: 3}
       propertyPath: m_LocalScale.x

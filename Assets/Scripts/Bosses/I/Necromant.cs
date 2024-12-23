@@ -12,8 +12,8 @@ public class Necromant : MonoBehaviour
     [SerializeField] private GameObject BSkelet;
     [SerializeField] private GameObject Hands;
     [SerializeField] private Image HealthBar;
-    [SerializeField] private int MskeletCount = 0;
     [SerializeField] private int Health = 20;
+    [SerializeField] private int MAxSceletCountM = 2;
     [SerializeField] private int MaxHealth;
     [SerializeField] private Animator Animator;
     [SerializeField] private Win StartWin;
@@ -29,6 +29,7 @@ public class Necromant : MonoBehaviour
     private AudioSource audioSource;
 
     private GameObject Spawned;
+     private int MskeletCount = 0;
     public bool FStadia = false;
     private bool CountFStadia = true;
     private int GetDamageC = 0;
@@ -128,7 +129,7 @@ public class Necromant : MonoBehaviour
         Animator.SetFloat("StateNecromant", 0);
         if (MskeletCount == 0) 
         {
-            for (int i = 0;i < 2;i++)      
+            for (int i = 0;i < MAxSceletCountM; i++)      
             {
                 float PositionX = Random.Range(-2,2);
                 float PositionY = Random.Range(-2,2);
