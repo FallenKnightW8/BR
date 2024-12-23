@@ -30,6 +30,7 @@ public class CircleFire : MonoBehaviour
         }
         if (!IsDestroying) StartCoroutine(TimeToDie());
     }
+
     private void RotateToPlayer()
     {
         Vector3 targ = transform.position;
@@ -39,33 +40,43 @@ public class CircleFire : MonoBehaviour
         float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.SendMessage("GetDamage", Damage);
             DestroyBySword();
         }
+        if (collision.gameObject.CompareTag("Props"))
+        {
+            DestroyBySword();
+        }
     }
+
     private void DestroyBySword()
     {
         Destroy(this.gameObject);
     }
+
     public void GetHit()
     {
         DestroyBySword();
     }
+
     private IEnumerator TimeToAim()
     {
         yield return new WaitForSeconds(Timing);
         Aiming = false;
     }
+
     private IEnumerator TimeToDie()
     {
         IsDestroying = true;
         yield return new WaitForSeconds(5);
         DestroyBySword();
     }
+
     private void FlyToPlayer()
     {
         transform.Translate(50 * speed * Time.deltaTime * Vector3.up);

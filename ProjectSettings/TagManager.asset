@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Boss
   - Mysic
+  - Props
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Player
   - Post Processing
   - PostTest
-  - 
+  - Props
   - 
   - 
   - 
