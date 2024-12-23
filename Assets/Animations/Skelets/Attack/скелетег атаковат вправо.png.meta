@@ -74,7 +74,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -172,6 +172,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -180,12 +193,12 @@ TextureImporter:
         \u0432\u043F\u0440\u0430\u0432\u043E_0"
       rect:
         serializedVersion: 2
-        x: 25
+        x: 26
         y: 0
-        width: 17
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 15
+        height: 19
+      alignment: 9
+      pivot: {x: 0.53333336, y: 0.7894737}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -202,12 +215,12 @@ TextureImporter:
         \u0432\u043F\u0440\u0430\u0432\u043E_1"
       rect:
         serializedVersion: 2
-        x: 91
+        x: 92
         y: 0
-        width: 18
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 16
+        height: 19
+      alignment: 9
+      pivot: {x: 0.375, y: 0.7894737}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -224,12 +237,12 @@ TextureImporter:
         \u0432\u043F\u0440\u0430\u0432\u043E_2"
       rect:
         serializedVersion: 2
-        x: 155
+        x: 156
         y: 0
-        width: 18
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 16
+        height: 19
+      alignment: 9
+      pivot: {x: 0.375, y: 0.7894737}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -246,12 +259,12 @@ TextureImporter:
         \u0432\u043F\u0440\u0430\u0432\u043E_3"
       rect:
         serializedVersion: 2
-        x: 218
+        x: 219
         y: 0
-        width: 17
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 15
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4666667, y: 0.7894737}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -268,12 +281,12 @@ TextureImporter:
         \u0432\u043F\u0440\u0430\u0432\u043E_4"
       rect:
         serializedVersion: 2
-        x: 271
+        x: 272
         y: 0
-        width: 24
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 22
+        height: 27
+      alignment: 9
+      pivot: {x: 0.8181819, y: 0.5555556}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -290,12 +303,12 @@ TextureImporter:
         \u0432\u043F\u0440\u0430\u0432\u043E_5"
       rect:
         serializedVersion: 2
-        x: 336
+        x: 337
         y: 0
-        width: 23
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 21
+        height: 27
+      alignment: 9
+      pivot: {x: 0.8095238, y: 0.5555556}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -312,12 +325,12 @@ TextureImporter:
         \u0432\u043F\u0440\u0430\u0432\u043E_6"
       rect:
         serializedVersion: 2
-        x: 400
+        x: 401
         y: 0
-        width: 32
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 30
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5666667, y: 0.59999996}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -334,12 +347,12 @@ TextureImporter:
         \u0432\u043F\u0440\u0430\u0432\u043E_7"
       rect:
         serializedVersion: 2
-        x: 476
+        x: 477
         y: 0
-        width: 20
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 18
+        height: 17
+      alignment: 9
+      pivot: {x: 0.22222222, y: 0.7647059}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -356,12 +369,12 @@ TextureImporter:
         \u0432\u043F\u0440\u0430\u0432\u043E_8"
       rect:
         serializedVersion: 2
-        x: 539
+        x: 540
         y: 0
-        width: 18
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 16
+        height: 19
+      alignment: 9
+      pivot: {x: 0.3125, y: 0.7894737}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -378,12 +391,12 @@ TextureImporter:
         \u0432\u043F\u0440\u0430\u0432\u043E_9"
       rect:
         serializedVersion: 2
-        x: 601
+        x: 602
         y: 0
-        width: 17
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 15
+        height: 19
+      alignment: 9
+      pivot: {x: 0.53333336, y: 0.7894737}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -398,14 +411,24 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 3dafa60fecb8fba49af9b7f0d0ea86cc
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "\u0441\u043A\u0435\u043B\u0435\u0442\u0435\u0433 \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442 \u0432\u043F\u0440\u0430\u0432\u043E_0": -9141962466575721034
+      "\u0441\u043A\u0435\u043B\u0435\u0442\u0435\u0433 \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442 \u0432\u043F\u0440\u0430\u0432\u043E_1": -6217935573554758331
+      "\u0441\u043A\u0435\u043B\u0435\u0442\u0435\u0433 \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442 \u0432\u043F\u0440\u0430\u0432\u043E_2": -3037594714167832431
+      "\u0441\u043A\u0435\u043B\u0435\u0442\u0435\u0433 \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442 \u0432\u043F\u0440\u0430\u0432\u043E_3": 5135377124916911398
+      "\u0441\u043A\u0435\u043B\u0435\u0442\u0435\u0433 \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442 \u0432\u043F\u0440\u0430\u0432\u043E_4": 8455096269633943704
+      "\u0441\u043A\u0435\u043B\u0435\u0442\u0435\u0433 \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442 \u0432\u043F\u0440\u0430\u0432\u043E_5": 7569968928975102504
+      "\u0441\u043A\u0435\u043B\u0435\u0442\u0435\u0433 \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442 \u0432\u043F\u0440\u0430\u0432\u043E_6": 5499750235367826386
+      "\u0441\u043A\u0435\u043B\u0435\u0442\u0435\u0433 \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442 \u0432\u043F\u0440\u0430\u0432\u043E_7": -3850731249071984590
+      "\u0441\u043A\u0435\u043B\u0435\u0442\u0435\u0433 \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442 \u0432\u043F\u0440\u0430\u0432\u043E_8": 792219410623693878
+      "\u0441\u043A\u0435\u043B\u0435\u0442\u0435\u0433 \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442 \u0432\u043F\u0440\u0430\u0432\u043E_9": 6430635867026457530
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -49,10 +49,7 @@ public class Necromant : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Health <= 0)
-        {
-            Died();
-        }
+
         if (Player == null)
             Player = GameObject.FindWithTag("Player");
         if (FStadia == false && Health >0)
@@ -74,7 +71,10 @@ public class Necromant : MonoBehaviour
         Animator.SetFloat("StateNecromant", 1);
         
         GetDamageC++;
-
+        if (Health <= 0)
+        {
+            Died();
+        }
         if (GetDamageC % 2 == 0 && Health!=0) { Teleport(); GetDamageC = 0; CountOfFireAi+=2; CountOfFire = CountOfFire + 2; }
 
         if (Health <= 5 && CountFStadia == true)
@@ -88,7 +88,7 @@ public class Necromant : MonoBehaviour
     {
         if (CanAttack)
         {
-            int RandomAttack = Random.Range(0, 4);
+            int RandomAttack = Random.Range(0, 0);
             switch (RandomAttack)
             {
                 case 0:
@@ -109,6 +109,10 @@ public class Necromant : MonoBehaviour
 
     }
 
+    public void MskeleMSkeletDied(int Value)
+    {
+        MskeletCount -= Value;
+    }
 
     private void SpawnSK()
     {
@@ -207,7 +211,6 @@ public class Necromant : MonoBehaviour
     private void Died()
     {
         Animator.SetTrigger("IsDie?");
-        Debug.Log("Died konch");
         audioSource.SendMessage("ChangerMys", 3);
         audioSource.loop = false;
         //Player.SendMessage("SetHeart", 2);

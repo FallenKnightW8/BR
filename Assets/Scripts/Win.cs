@@ -11,21 +11,30 @@ public class Win : MonoBehaviour
 
     public void WinGame()
     {
+        StartTime();
         WinPanel.SetActive(true);
         CounterOfDies.text = PlayerPrefs.GetInt("CounterOfDies").ToString();
     }
 
     public void MainMenu()
     {
+        StartTime();
         SceneManager.LoadScene(0);
     }
     public void QuitTheGame()
     {
+        StartTime();
         Application.Quit();
     }
 
     public void Restart()
     {
+        StartTime();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void StartTime()
+    {
+        Time.timeScale = 1;
     }
 }

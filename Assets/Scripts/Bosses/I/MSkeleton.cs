@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+
 public class MSkeleton : MonoBehaviour
 {
     [SerializeField] private GameObject Player;//hero
@@ -10,9 +11,16 @@ public class MSkeleton : MonoBehaviour
     [SerializeField] private float speed = 0.05f;
     [SerializeField] private int Damage = 1;
     [SerializeField] private SpriteRenderer SpriteColor;
+    private Animator AnimationController;
     private bool playerInRange = false;
+    private bool IsAttack = false;
 
     private Vector2 movement;
+
+    private void Awake()
+    {
+        AnimationController = GetComponent<Animator>();
+    }
     private void GetDamage(int Damage)
     {
         Health -= Damage;
@@ -25,12 +33,18 @@ public class MSkeleton : MonoBehaviour
 
         if (Player == null)
             Player = GameObject.FindWithTag("Player");
+        AnimationController.SetFloat("Horizontal", GetPlayerHorizontalPos());
         if (Father == null)
             Father = GameObject.FindWithTag("Boss");
         if (Rigidbody == null)
             Rigidbody = this.GetComponent<Rigidbody2D>();
         if (Health <= 0) Died();
         GetPlayer();
+    }
+
+    public float GetPlayerHorizontalPos() 
+    {
+        return Player.transform.position.x - transform.position.x;
     }
 
     private void GetPlayer()
@@ -48,13 +62,23 @@ public class MSkeleton : MonoBehaviour
     public void ChangePlayerR(bool Check)
     {
         playerInRange = Check;
-        StartCoroutine(Attack());
+
+        if (!IsAttack)
+        {
+            AnimationController.SetTrigger("IsAttack?");
+            StartCoroutine(Attack());
+        }
     }
 
     private IEnumerator Attack()
     {
-        yield return new WaitForSeconds(0.5f);
-         if(playerInRange) Player.SendMessage("GetDamage",Damage);
+        IsAttack = true;
+        yield return new WaitForSeconds(0.3f);
+        if (playerInRange)
+        {
+            Player.SendMessage("GetDamage", Damage);
+        }
+        IsAttack = false;
         StopCoroutine(Attack());
     }    
     private void Died()
