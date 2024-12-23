@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    [SerializeField] private String StartScene; //игрок появляется на разрушенном хабе
-    [SerializeField] private GameObject SetingPanel; // панелька слева в меню
+    [SerializeField] private String StartScene;
+    [SerializeField] private GameObject SetingPanel;
+    [SerializeField] private TMP_Text Txt;
     private bool IsOpened = false;
-    [SerializeField]private TMP_Text Txt;
 
     private void Awake()
     {
@@ -23,13 +23,11 @@ public class Menu : MonoBehaviour
         Tity = PlayerPrefs.GetInt("Score").ToString().ToCharArray();
 
         string Titi = "";
-        if (Tity.Length > 1)
+        for (int i = 0; i < Tity.Length; i++)
         {
-            for (int i = 0; i < Tity.Length; i++)
-            {
-                Titi +=("<sprite name=\"" + Tity[i].ToString() + "\">");
-            }
+            Titi += ("<sprite name=\"" + Tity[i].ToString() + "\">");
         }
+
         Txt.text = Titi;
     }
 
