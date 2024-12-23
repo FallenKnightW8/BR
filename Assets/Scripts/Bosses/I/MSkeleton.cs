@@ -87,7 +87,7 @@ public class MSkeleton : MonoBehaviour
         {
             Father.SendMessageUpwards("MskeleMSkeletDied", 1);
         }
-        PlayerPrefs.SetFloat("Score", PlayerPrefs.GetFloat("Score") + 1);
+        PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score") + 1);
         Destroy(gameObject);
     }
 

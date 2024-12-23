@@ -73,7 +73,7 @@ public class Necromant : MonoBehaviour
         Health -= Damage;
         float HealthF = MaxHealth;
         HealthBar.fillAmount = Health / HealthF;
-        PlayerPrefs.SetFloat("Score", PlayerPrefs.GetFloat("Score") + 1);
+        PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score") + 1);
         Animator.SetBool("Idle?", false);
         Animator.SetFloat("StateNecromant", 1);
         
