@@ -25,6 +25,7 @@ public class Menu : MonoBehaviour
         }
         if(PlayerPrefs.GetInt("Score") > PlayerPrefs.GetInt("MaxScore"))
             PlayerPrefs.SetInt("MaxScore", PlayerPrefs.GetInt("Score"));
+        PlayerPrefs.SetInt("Score", 0);
         char[] Tity = new char[100];
         Tity = PlayerPrefs.GetInt("MaxScore").ToString().ToCharArray();
         string Titi = "";

@@ -55,11 +55,11 @@ public class Necromant : MonoBehaviour
         Animator.SetFloat("Horizontal", GetPlayerHorizontalPos());
         if (FStadia == false && Health >0)
             BatelMind();
-        /*else if (FStadia == true)
-        {
-            FStadia = false;
-            FBatle();
-        }*/
+        //else if (FStadia == true)
+        //{
+        //    FStadia = false;
+        //    FBatle();
+        //}
     }
 
     public float GetPlayerHorizontalPos()
@@ -85,11 +85,11 @@ public class Necromant : MonoBehaviour
         }
         if (GetDamageC % 2 == 0 && Health!=0) { Teleport(); GetDamageC = 0; CountOfFireAi+=2; CountOfFire = CountOfFire + 2; }
 
-        if (Health <= 5 && CountFStadia == true)
-        {
-            FStadia = true;
-            CountFStadia = false;
-        }
+        //if (Health <= 5 && CountFStadia == true)
+        //{
+        //    FStadia = true;
+        //    CountFStadia = false;
+        //}
     }
 
     private void BatelMind()
@@ -208,7 +208,7 @@ public class Necromant : MonoBehaviour
         Animator.SetFloat("StateNecromant", 0);
         for (int i = 0; i < 2; i++)
         {
-            Spawned = Instantiate(Hands);
+            Spawned = Instantiate(MSkelet);
             Spawned.transform.position = new Vector2(0, 10);
         }
         Animator.SetBool("Idle?", false);
