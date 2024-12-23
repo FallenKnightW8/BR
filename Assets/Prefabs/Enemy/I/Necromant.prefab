@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6291906618853265999}
   - component: {fileID: 5360386021087794804}
   - component: {fileID: 6702736536656116486}
+  - component: {fileID: 6871505508508364004}
   m_Layer: 7
   m_Name: Necromant
   m_TagString: Boss
@@ -108,6 +109,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.4903633, y: 1.2403355}
   m_EdgeRadius: 0
+--- !u!95 &6871505508508364004
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416145091097776630}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2716651052f32834fb05c0532cce8a60, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6402190117404605251
 GameObject:
   m_ObjectHideFlags: 0

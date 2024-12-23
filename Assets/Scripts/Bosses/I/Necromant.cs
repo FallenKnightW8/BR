@@ -49,9 +49,9 @@ public class Necromant : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         if (Player == null)
             Player = GameObject.FindWithTag("Player");
+        Animator.SetFloat("Horizontal", GetPlayerHorizontalPos());
         if (FStadia == false && Health >0)
             BatelMind();
         /*else if (FStadia == true)
@@ -61,6 +61,13 @@ public class Necromant : MonoBehaviour
         }*/
     }
 
+    public float GetPlayerHorizontalPos()
+    {
+
+        if(Player.transform.position.y - transform.position.y <= 0)
+            return 0f;
+        return Player.transform.position.x - transform.position.x;
+    }
     private void GetDamage(int Damage)
     {
         Health -= Damage;
@@ -88,7 +95,8 @@ public class Necromant : MonoBehaviour
     {
         if (CanAttack)
         {
-            int RandomAttack = Random.Range(0, 0);
+            Animator.SetTrigger("Isattack?");
+            int RandomAttack = Random.Range(0, 4);
             switch (RandomAttack)
             {
                 case 0:
@@ -105,7 +113,7 @@ public class Necromant : MonoBehaviour
                     break;
             }
         }
-
+            
 
     }
 
