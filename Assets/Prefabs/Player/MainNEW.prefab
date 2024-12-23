@@ -174,12 +174,10 @@ GameObject:
   - component: {fileID: 7510862553341802144}
   - component: {fileID: 633682599699665959}
   - component: {fileID: 2717737458709955861}
-  - component: {fileID: 70620480334411267}
-  - component: {fileID: 1685209192836292405}
-  - component: {fileID: 4959678329643685911}
   - component: {fileID: 4753299446453608661}
   - component: {fileID: 9139765141987874261}
   - component: {fileID: 2541165426304020424}
+  - component: {fileID: 7975573262359844688}
   m_Layer: 8
   m_Name: MainNEW
   m_TagString: Player
@@ -500,46 +498,6 @@ MonoBehaviour:
   colorAlphaOverride: 1
   alphaFluctuationOverride: 0.611
   alphaFluctuationDivisor: 95
---- !u!114 &70620480334411267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5435108320535616357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f0eccad96d5efe42b8e1c74a708fdf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Lose: {fileID: 0}
---- !u!114 &1685209192836292405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5435108320535616357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8a67572f5d12e4bbdcc22439e10960, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WinPanel: {fileID: 0}
-  CounterOfDies: {fileID: 0}
---- !u!114 &4959678329643685911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5435108320535616357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26a408d0624ac8e4892a7cc5eeb7846d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PauseMenu: {fileID: 0}
 --- !u!82 &4753299446453608661
 AudioSource:
   m_ObjectHideFlags: 0
@@ -670,6 +628,19 @@ MonoBehaviour:
   DelayRegeneration: 4
   DelayBetweenRegeneration: 2
   RegenerationHealth: 1
+--- !u!114 &7975573262359844688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435108320535616357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0eccad96d5efe42b8e1c74a708fdf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lose: {fileID: 0}
 --- !u!1 &8166667881221745599
 GameObject:
   m_ObjectHideFlags: 0

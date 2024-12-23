@@ -3129,6 +3129,8 @@ GameObject:
   - component: {fileID: 2188472276266272527}
   - component: {fileID: 5015028488387869069}
   - component: {fileID: 212907662411158794}
+  - component: {fileID: 7863458504326318926}
+  - component: {fileID: 9041071498330863744}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3223,9 +3225,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804ae0dbc87846d4cba5eb83209be773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  Player: {fileID: 0}
   smoothSpeed: 0.125
-  offset: {x: 0, y: 0, z: 0}
+--- !u!114 &7863458504326318926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6861660651209304501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a408d0624ac8e4892a7cc5eeb7846d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PauseMenu: {fileID: 1908721535912386300}
+--- !u!114 &9041071498330863744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6861660651209304501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8a67572f5d12e4bbdcc22439e10960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WinPanel: {fileID: 7827365941288920310}
+  CounterOfDies: {fileID: 9199467346005035478}
 --- !u!1 &7302274451924127114
 GameObject:
   m_ObjectHideFlags: 0
