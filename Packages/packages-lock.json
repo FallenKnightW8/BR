@@ -175,6 +175,7 @@
       },
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
     "com.unity.sysroot": {
       "version": "2.0.10",
       "depth": 1,
@@ -191,6 +192,8 @@
       },
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> parent of a5062b7 (update to 6versionUnity)
     "com.unity.test-framework": {
       "version": "1.3.9",
       "depth": 0,
@@ -214,6 +217,7 @@
       },
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
     "com.unity.toolchain.macos-x86_64-linux-x86_64": {
       "version": "2.0.10",
       "depth": 0,
@@ -234,6 +238,8 @@
       },
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> parent of a5062b7 (update to 6versionUnity)
     "com.unity.ugui": {
       "version": "2.0.0",
       "depth": 0,

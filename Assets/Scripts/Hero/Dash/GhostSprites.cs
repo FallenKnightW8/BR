@@ -245,7 +245,7 @@ public class GhostSprites : MonoBehaviour
     {
         if (RenderOnMotion
            && hasRigidBody2D
-           && gameObject.GetComponent<Rigidbody2D>().linearVelocity == Vector2.zero
+           && gameObject.GetComponent<Rigidbody2D>().velocity == Vector2.zero
            && !allowPositionOverride)
         {
             if (ghostList.Count > 0)

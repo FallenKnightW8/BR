@@ -47,12 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494c1f01650fd5346bbf1556359e5302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MSkelet: {fileID: 2267697806238536257, guid: b42ad7ac4552ce347843f117a24b9983, type: 3}
-  BSkelet: {fileID: 0}
-  Hands: {fileID: 0}
+  MSkelet: {fileID: 8854235507369198583, guid: 3e86b029c3b6e7549b40938ff9339a1e, type: 3}
+  BSkelet: {fileID: 3998129105029732189, guid: c93ff3f80673b5643b9db3b5abd37202, type: 3}
+  Hands: {fileID: 8932112576315897985, guid: 79f5f0012828a4d478290a597ce310da, type: 3}
   HealthBar: {fileID: 0}
+  MskeletCount: 0
   Health: 20
-  MAxSceletCountM: 2
   MaxHealth: 0
   Animator: {fileID: 0}
   StartWin: {fileID: 0}
@@ -60,8 +60,8 @@ MonoBehaviour:
   AimFire: {fileID: 7071377017263211062, guid: 02665f0beca92674e83c45b09d0e72f7, type: 3}
   CircleFire: {fileID: 7071377017263211062, guid: 92b22904253b02745a26f4080f6c868f, type: 3}
   Fire: {fileID: 7071377017263211062, guid: febc71c73ed998e46acf2fbb80e6a081, type: 3}
-  CountOfFireAi: 360
-  CountOfFire: 360
+  CountOfFireAi: 4
+  CountOfFire: 12
   FStadia: 0
 --- !u!61 &6702736536656116486
 BoxCollider2D:
@@ -183,7 +183,6 @@ SpriteRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
