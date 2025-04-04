@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] private HerMovement scriptMovment;
+    [SerializeField] private BladeBoost scriptBladeBoost;
     [SerializeField] private Rigidbody2D Rigidbody;
 
     [SerializeField] private Transform attackPoint;
@@ -22,10 +23,21 @@ public class PlayerCombat : MonoBehaviour
     [Header("Animations")]
     [SerializeField] private Animator animator;
 
+    public void setDamage(int _damage)
+    {
+        damage = _damage;
+    }
+
+    public int getDamage()
+    {
+        return damage;
+    }
+
     private void Awake()
     {
         scriptMovment = GetComponent<HerMovement>();
         Rigidbody = GetComponent<Rigidbody2D>();
+        scriptBladeBoost = GetComponent<BladeBoost>();
     }
 
     private void Update()
@@ -64,6 +76,12 @@ public class PlayerCombat : MonoBehaviour
 
     }
 
+    // Устанавливаем позицию точки атаки
+    private void SetAttackPointPosition(Vector3 _position)
+    {
+        attackPoint.position = _position;
+    }
+
     // Метод атаки
     private void Attack()
     {
@@ -75,9 +93,28 @@ public class PlayerCombat : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            // Наносим урон врагу
-            enemy.SendMessage("GetDamage", damage);
-            //Debug.Log("We hit " + enemy.name);
+            if (enemy.gameObject.CompareTag("Player")) // Так как игрок всегда находится в Collider hitEnemies нужна на него проверка, желательно переписать всю атаку.
+                continue;
+
+            if (enemy.gameObject.layer == LayerMask.NameToLayer("BulletEnemy") && scriptBladeBoost.GetCanDestroyObjects())
+            {
+                Destroy(enemy.gameObject);
+                
+                Debug.Log("Уничтожено");
+            }
+            else if (enemy.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                if (enemy != null)
+                {
+                    //damageable.GetDamage(damage);
+                    enemy.SendMessage("GetDamage", damage);
+                    Debug.Log("Damage");
+                }
+                else
+                {
+                    Debug.LogWarning($"Объект {enemy.name} не имеет метода GetDamage.");
+                }
+            }
         }
     }
 
@@ -87,22 +124,5 @@ public class PlayerCombat : MonoBehaviour
             return;
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
-
-    // Устанавливаем позицию точки атаки
-    public void SetAttackPointPosition(Vector3 _position)
-    {
-        attackPoint.position = _position;
-    }
-
-    // Методы для работы с уроном
-    public void setDamage(int _damage)
-    {
-        damage = _damage;
-    }
-
-    public int getDamage()
-    {
-        return damage;
     }
 }

@@ -16,15 +16,15 @@ TagManager:
   - UI
   - 
   - Enemy
+  - BulletEnemy
+  - 
+  - 
+  - 
+  - 
   - Player
   - Post Processing
   - PostTest
   - Props
-  - 
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 

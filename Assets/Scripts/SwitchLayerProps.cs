@@ -13,7 +13,7 @@ public class SwitchLayerProps : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("SwitchLayerProps");
+        //Debug.Log("SwitchLayerProps");
         spriteRenderer.sortingLayerName = "Props";
     }
 
