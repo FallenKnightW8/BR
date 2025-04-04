@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -39,6 +40,13 @@ public class Menu : MonoBehaviour
 
     public void NewGame() // новая игра, удаляет сохранения
     {
+        NetworkManager.Singleton.StartHost();
+        SceneManager.LoadScene(StartScene);
+    }
+
+    public void ConectToFreand()
+    {
+        NetworkManager.Singleton.StartClient();
         SceneManager.LoadScene(StartScene);
     }
 
