@@ -11,9 +11,9 @@ public class FallenKnight : MonoBehaviour
     [SerializeField] private GameObject Sword;
     [SerializeField] private GameObject AimSword;
     [SerializeField] private Slider HealthBar;
-    [SerializeField]private bool PlayerInAttackR = false;
+    [SerializeField]private int PlayerInAttackR = 0;
     [SerializeField] private int Health = 30;
-    [SerializeField] private int Damage = 2;
+    [SerializeField] private int Damage = 1;
     
     private AudioSource audioSource;
     private bool FStarted = false;
@@ -23,7 +23,7 @@ public class FallenKnight : MonoBehaviour
     private void Awake()
     {
         audioSource = GameObject.FindWithTag("Mysic").GetComponent<AudioSource>();
-        audioSource.SendMessage("ChangerMys", 5);
+        audioSource.SendMessage("BossFigthStart", 6);
         HealthBar.value = Health;
     }
     private void FixedUpdate()
@@ -39,8 +39,8 @@ public class FallenKnight : MonoBehaviour
             Debug.Log("Thinking");
             StartCoroutine(ChangeAttack());
         }
-        if (transform.position.x <=-9 || transform.position.x >= 0.5) transform.position = new Vector2(0, transform.position.y);
-        if (transform.position.y >= 19 || transform.position.y <= 3) transform.position = new Vector2(transform.position.x, 18);
+        if (transform.position.x <=-7.5 || transform.position.x >= 13) transform.position = new Vector2(3, transform.position.y);
+        if (transform.position.y >= 3 || transform.position.y <= -24) transform.position = new Vector2(transform.position.x, -12);
     }
     private void GetDamage(int Damage)
     {
@@ -48,7 +48,7 @@ public class FallenKnight : MonoBehaviour
         HealthBar.value = Health; 
     }
         
-    public void ChangePlayerR(bool Check)
+    public void ChangePlayerR(int Check)
     {
         PlayerInAttackR = Check;
     }
@@ -69,7 +69,6 @@ public class FallenKnight : MonoBehaviour
         if (Stadia == 1 && !FStarted) 
         {
             FStarted = true;
-            audioSource.SendMessage("ChangerMys", 6);
         }
         WhatTheAttack = Random.Range(0, Stadia);
         switch (WhatTheAttack) 
@@ -83,13 +82,14 @@ public class FallenKnight : MonoBehaviour
             case 2:
                 MeleeAttack();
                 break;
+            
 
         }
     }
 
     private void ShotAttack()//Zero Attak
     {
-        Vector2 RandomPosition = new Vector2(0,23);
+        Vector2 RandomPosition = new Vector2(0,-12);
         RandomPosition.x = Random.Range(-4,4);
         transform.position = RandomPosition; 
         for (int i = 0;i < 18; i++)
@@ -112,16 +112,39 @@ public class FallenKnight : MonoBehaviour
     }
     private IEnumerator CuldawnAttack() 
     {
-        yield return new WaitForSeconds(0.5f);
-        if (PlayerInAttackR) Player.SendMessage("GetDamage", Damage);
-        Attacking = false;
+        Debug.Log("1");
+        yield return new WaitForSeconds(1f);
+        if (PlayerInAttackR == 1) Player.SendMessage("GetDamage", Damage);
+        Debug.Log("FinishAtack 1");
+        StartCoroutine(SecondPArtOfCombo());
         StopCoroutine(CuldawnAttack());
+    }
+
+    private IEnumerator SecondPArtOfCombo()
+    {
+        Debug.Log("2");
+        yield return new WaitForSeconds(0.7f);
+        if (PlayerInAttackR == 2) Player.SendMessage("GetDamage", Damage);
+        Debug.Log("FinishAtack 2");
+        StartCoroutine(ThredPArtOfCombo());
+        StopCoroutine(SecondPArtOfCombo());
+    }
+
+    private IEnumerator ThredPArtOfCombo()
+    {
+        Debug.Log("3");
+        yield return new WaitForSeconds(0.5f);
+        if (PlayerInAttackR == 3) Player.SendMessage("GetDamage", Damage);
+        Debug.Log("FinishAtack 3");
+        Attacking = false;
+        StopCoroutine(ThredPArtOfCombo());
     }
 
     private void AimSwods() //second attack
     {
         int DirectionX = Random.Range(0, 1);
-        for (int i = 0; i < (13 - 4*(Convert.ToInt32(Mathf.Round(Health / 10)))) ; i++)
+        //for (int i = 0; i < (13 - 4*(Convert.ToInt32(Mathf.Round(Health / 10)))) ; i++)
+        for(int i = 0;i<1;i++)
         {
             Vector2 RandomP;
             if (DirectionX == 1)
@@ -142,7 +165,7 @@ public class FallenKnight : MonoBehaviour
 
     private void Die()
     {
-        audioSource.SendMessage("ChangerMys", 7);
+        //audioSource.SendMessage("ChangerMys", 7);
         Destroy(this.gameObject);
 
     }

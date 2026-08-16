@@ -18,4 +18,15 @@ public class ChangerMuse : MonoBehaviour
         audioSource.clip = Mysics[Clip];
         audioSource.Play();
     }
+
+    public void BossFigthStart(int musikSlot)
+    {
+        ChangerMys(musikSlot);
+    }
+
+    /*private void GetBossHealth()
+    {
+        break;
+    }*/
+    //5 - fallenKnightNon Startted batle
 }
