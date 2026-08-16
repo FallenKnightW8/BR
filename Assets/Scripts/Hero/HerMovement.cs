@@ -54,7 +54,7 @@ public class HerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Rigidbody.velocity = Direction * ActivityMoveSpeed;
+        Rigidbody.linearVelocity = Direction * ActivityMoveSpeed;
     }
 
     private void Move()
@@ -72,7 +72,7 @@ public class HerMovement : MonoBehaviour
             animator.SetFloat("Horizontal", Direction.x);
             animator.SetFloat("Vertical", Direction.y);
         }
-        animator.SetFloat("Speed", Rigidbody.velocity.sqrMagnitude);
+        animator.SetFloat("Speed", Rigidbody.linearVelocity.sqrMagnitude);
 
         if (Direction.x > 0) { animator.SetFloat("IdleLeftRight", 1); }
         else if (Direction.x < 0) { animator.SetFloat("IdleLeftRight", -1); }

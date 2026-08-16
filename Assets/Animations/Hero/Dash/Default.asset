@@ -2,6 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!213 &21300000
 Sprite:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -18,15 +19,13 @@ Sprite:
   m_PixelsToUnits: 100
   m_Pivot: {x: 0.37931034, y: 0.59999996}
   m_Extrude: 1
-  m_IsPolygon: 0
-  m_AtlasName: 
   m_PackingTag: 
   m_RenderDataKey:
-    77f278616b8068c4399503745f3157be: 563573393389970067
+    2b1f578742a5e104baaa4eda1c2ba9d0: 21300000
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
-    serializedVersion: 3
+    serializedVersion: 4
     texture: {fileID: 2800000, guid: 77f278616b8068c4399503745f3157be, type: 3}
     alphaTexture: {fileID: 0}
     secondaryTextures: []
@@ -105,6 +104,11 @@ Sprite:
       m_DataSize: 208
       _typelessdata: ae47e1bdcecccc3d00000000ec51383ececccc3d00000000ae47e1bd999919be00000000ec51383e999919be000000007564cf3c0000483f0000803f00000000000000000000000000000000000000000000000000000000420e7e3d0000483f0000803f000000000000000000000000000000000000000000000000000000007564cf3c000000000000803f00000000000000000000000000000000000000000000000000000000420e7e3d000000000000803f00000000000000000000000000000000000000000000000000000000
     m_Bindpose: []
+    m_BlendShapes:
+      vertices: []
+      shapes: []
+      channels: []
+      fullWeights: []
     textureRect:
       serializedVersion: 2
       x: 20
@@ -117,7 +121,7 @@ Sprite:
     uvTransform: {x: 100, y: 31, z: 100, w: 14.999999}
     downscaleMultiplier: 1
   m_AtlasRD:
-    serializedVersion: 3
+    serializedVersion: 4
     texture: {fileID: 2800000, guid: 77f278616b8068c4399503745f3157be, type: 3}
     alphaTexture: {fileID: 0}
     secondaryTextures: []
@@ -196,6 +200,11 @@ Sprite:
       m_DataSize: 208
       _typelessdata: ae47e1bdcecccc3d00000000ec51383ececccc3d00000000ae47e1bd999919be00000000ec51383e999919be000000007564cf3c0000483f0000803f00000000000000000000000000000000000000000000000000000000420e7e3d0000483f0000803f000000000000000000000000000000000000000000000000000000007564cf3c000000000000803f00000000000000000000000000000000000000000000000000000000420e7e3d000000000000803f00000000000000000000000000000000000000000000000000000000
     m_Bindpose: []
+    m_BlendShapes:
+      vertices: []
+      shapes: []
+      channels: []
+      fullWeights: []
     textureRect:
       serializedVersion: 2
       x: 20

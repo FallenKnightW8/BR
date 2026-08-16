@@ -2,6 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!213 &21300000
 Sprite:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -18,15 +19,13 @@ Sprite:
   m_PixelsToUnits: 100
   m_Pivot: {x: 0.5, y: 0.5}
   m_Extrude: 1
-  m_IsPolygon: 0
-  m_AtlasName: 
   m_PackingTag: 
   m_RenderDataKey:
-    2e3bccd534f41104f94f129fa9b0ce23: -1867672049418685495
+    bf0d360454932004eb7ca0bf7d1e2c96: 21300000
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
-    serializedVersion: 3
+    serializedVersion: 4
     texture: {fileID: 2800000, guid: 2e3bccd534f41104f94f129fa9b0ce23, type: 3}
     alphaTexture: {fileID: 0}
     secondaryTextures: []
@@ -105,6 +104,11 @@ Sprite:
       m_DataSize: 208
       _typelessdata: 713d0abeb81e853e00000000713d0a3eb81e853e00000000713d0abeb81e85be00000000713d0a3eb81e85be00000000310c433d610b363f0000803f00000000000000000000000000000000000000000000000000000000954bb93d610b363f0000803f00000000000000000000000000000000000000000000000000000000310c433d8988083e0000803f00000000000000000000000000000000000000000000000000000000954bb93d8988083e0000803f00000000000000000000000000000000000000000000000000000000
     m_Bindpose: []
+    m_BlendShapes:
+      vertices: []
+      shapes: []
+      channels: []
+      fullWeights: []
     textureRect:
       serializedVersion: 2
       x: 30
@@ -113,11 +117,11 @@ Sprite:
       height: 52
     textureRectOffset: {x: 0, y: 0}
     atlasRectOffset: {x: -1, y: -1}
-    settingsRaw: 64
+    settingsRaw: 2112
     uvTransform: {x: 100, y: 43.5, z: 100, w: 38}
     downscaleMultiplier: 1
   m_AtlasRD:
-    serializedVersion: 3
+    serializedVersion: 4
     texture: {fileID: 2800000, guid: 2e3bccd534f41104f94f129fa9b0ce23, type: 3}
     alphaTexture: {fileID: 0}
     secondaryTextures: []
@@ -196,6 +200,11 @@ Sprite:
       m_DataSize: 208
       _typelessdata: 713d0abeb81e853e00000000713d0a3eb81e853e00000000713d0abeb81e85be00000000713d0a3eb81e85be00000000310c433d610b363f0000803f00000000000000000000000000000000000000000000000000000000954bb93d610b363f0000803f00000000000000000000000000000000000000000000000000000000310c433d8988083e0000803f00000000000000000000000000000000000000000000000000000000954bb93d8988083e0000803f00000000000000000000000000000000000000000000000000000000
     m_Bindpose: []
+    m_BlendShapes:
+      vertices: []
+      shapes: []
+      channels: []
+      fullWeights: []
     textureRect:
       serializedVersion: 2
       x: 30
@@ -204,7 +213,7 @@ Sprite:
       height: 52
     textureRectOffset: {x: 0, y: 0}
     atlasRectOffset: {x: -1, y: -1}
-    settingsRaw: 64
+    settingsRaw: 2112
     uvTransform: {x: 100, y: 43.5, z: 100, w: 38}
     downscaleMultiplier: 1
   m_PhysicsShape:
